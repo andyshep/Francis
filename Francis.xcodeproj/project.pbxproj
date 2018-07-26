@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F70A0A5C20630482008A6189 /* DNSSDBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A5B20630482008A6189 /* DNSSDBrowser.m */; };
+		F70A0A5F206304C0008A6189 /* DNSSDService.m in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A5E206304C0008A6189 /* DNSSDService.m */; };
+		F70A0A612066FB51008A6189 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A602066FB51008A6189 /* WindowController.swift */; };
+		F717F532207AB5DF00532434 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717F531207AB5DF00532434 /* ServiceViewModel.swift */; };
+		F7640C73207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */; };
+		F7695D9F2079941F00A0AB54 /* ServiceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */; };
+		F7695DA1207A3F5A00A0AB54 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */; };
+		F7B3CC9D205D74B900A72DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CC9C205D74B900A72DF0 /* AppDelegate.swift */; };
+		F7B3CC9F205D74B900A72DF0 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */; };
+		F7B3CCA1205D74B900A72DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */; };
+		F7B3CCA4205D74B900A72DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA2205D74B900A72DF0 /* Main.storyboard */; };
+		F7BB97C12105504000C0CBB3 /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7EEAE732067221400EE1FEA /* ServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */; };
+		F7EEAE772067500100EE1FEA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; };
+		F7EEAE782067500100EE1FEA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7EEAE792067500100EE1FEA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE762067500100EE1FEA /* RxCocoa.framework */; };
+		F7EEAE7A2067500100EE1FEA /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE762067500100EE1FEA /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7EEAE7D2068378800EE1FEA /* ServiceTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F7EEAE7B2067500100EE1FEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F7BB97C12105504000C0CBB3 /* RxSwiftExt.framework in Embed Frameworks */,
+				F7EEAE7A2067500100EE1FEA /* RxCocoa.framework in Embed Frameworks */,
+				F7EEAE782067500100EE1FEA /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F70A0A5A20630481008A6189 /* DNSSDBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSDBrowser.h; sourceTree = "<group>"; };
+		F70A0A5B20630482008A6189 /* DNSSDBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSDBrowser.m; sourceTree = "<group>"; };
+		F70A0A5D206304C0008A6189 /* DNSSDService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSDService.h; sourceTree = "<group>"; };
+		F70A0A5E206304C0008A6189 /* DNSSDService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSDService.m; sourceTree = "<group>"; };
+		F70A0A602066FB51008A6189 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		F712532520DE73E000BE6683 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		F717F531207AB5DF00532434 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
+		F717F535207AF64C00532434 /* DNSSDInterfaceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSSDInterfaceType.h; sourceTree = "<group>"; };
+		F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DNSSDInterfaceType+String.swift"; sourceTree = "<group>"; };
+		F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInfoViewController.swift; sourceTree = "<group>"; };
+		F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
+		F7B3CC99205D74B900A72DF0 /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B3CC9C205D74B900A72DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7B3CCA3205D74B900A72DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7B3CCA5205D74B900A72DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7B3CCA6205D74B900A72DF0 /* Francis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Francis.entitlements; sourceTree = "<group>"; };
+		F7B3CCB1205EE58700A72DF0 /* Francis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Francis-Bridging-Header.h"; sourceTree = "<group>"; };
+		F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/Mac/RxSwiftExt.framework; sourceTree = "<group>"; };
+		F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBrowser.swift; sourceTree = "<group>"; };
+		F7EEAE752067500100EE1FEA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
+		F7EEAE762067500100EE1FEA /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
+		F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypesViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7B3CC96205D74B900A72DF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7EEAE792067500100EE1FEA /* RxCocoa.framework in Frameworks */,
+				F7EEAE772067500100EE1FEA /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F7359487207AADA100DC3907 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */,
+				F717F531207AB5DF00532434 /* ServiceViewModel.swift */,
+				F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		F7B3CC90205D74B900A72DF0 = {
+			isa = PBXGroup;
+			children = (
+				F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */,
+				F7EEAE762067500100EE1FEA /* RxCocoa.framework */,
+				F7EEAE752067500100EE1FEA /* RxSwift.framework */,
+				F7B3CC9B205D74B900A72DF0 /* Francis */,
+				F7B3CC9A205D74B900A72DF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F7B3CC9A205D74B900A72DF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7B3CC99205D74B900A72DF0 /* Francis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7B3CC9B205D74B900A72DF0 /* Francis */ = {
+			isa = PBXGroup;
+			children = (
+				F7B3CC9C205D74B900A72DF0 /* AppDelegate.swift */,
+				F70A0A602066FB51008A6189 /* WindowController.swift */,
+				F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */,
+				F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */,
+				F7359487207AADA100DC3907 /* View Models */,
+				F7C1C088206FF69300984097 /* Model */,
+				F7B3CCB1205EE58700A72DF0 /* Francis-Bridging-Header.h */,
+				F7EEAE7420674EE700EE1FEA /* DNSSDSample */,
+				F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */,
+				F7B3CCA2205D74B900A72DF0 /* Main.storyboard */,
+				F7B3CCA5205D74B900A72DF0 /* Info.plist */,
+				F7B3CCA6205D74B900A72DF0 /* Francis.entitlements */,
+			);
+			path = Francis;
+			sourceTree = "<group>";
+		};
+		F7C1C088206FF69300984097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */,
+				F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */,
+				F712532520DE73E000BE6683 /* Service.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F7EEAE7420674EE700EE1FEA /* DNSSDSample */ = {
+			isa = PBXGroup;
+			children = (
+				F70A0A5A20630481008A6189 /* DNSSDBrowser.h */,
+				F70A0A5B20630482008A6189 /* DNSSDBrowser.m */,
+				F70A0A5D206304C0008A6189 /* DNSSDService.h */,
+				F70A0A5E206304C0008A6189 /* DNSSDService.m */,
+				F717F535207AF64C00532434 /* DNSSDInterfaceType.h */,
+			);
+			name = DNSSDSample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7B3CC98205D74B900A72DF0 /* Francis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7B3CCA9205D74B900A72DF0 /* Build configuration list for PBXNativeTarget "Francis" */;
+			buildPhases = (
+				F7B3CC95205D74B900A72DF0 /* Sources */,
+				F7B3CC96205D74B900A72DF0 /* Frameworks */,
+				F7B3CC97205D74B900A72DF0 /* Resources */,
+				F7EEAE7B2067500100EE1FEA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Francis;
+			productName = Francis;
+			productReference = F7B3CC99205D74B900A72DF0 /* Francis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7B3CC91205D74B900A72DF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Andrew Shepard";
+				TargetAttributes = {
+					F7B3CC98205D74B900A72DF0 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = F7B3CC94205D74B900A72DF0 /* Build configuration list for PBXProject "Francis" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F7B3CC90205D74B900A72DF0;
+			productRefGroup = F7B3CC9A205D74B900A72DF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7B3CC98205D74B900A72DF0 /* Francis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7B3CC97205D74B900A72DF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7B3CCA1205D74B900A72DF0 /* Assets.xcassets in Resources */,
+				F7B3CCA4205D74B900A72DF0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7B3CC95205D74B900A72DF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F70A0A5F206304C0008A6189 /* DNSSDService.m in Sources */,
+				F70A0A612066FB51008A6189 /* WindowController.swift in Sources */,
+				F717F532207AB5DF00532434 /* ServiceViewModel.swift in Sources */,
+				F7640C73207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift in Sources */,
+				F7EEAE7D2068378800EE1FEA /* ServiceTypesViewModel.swift in Sources */,
+				F7EEAE732067221400EE1FEA /* ServiceBrowser.swift in Sources */,
+				F7B3CC9F205D74B900A72DF0 /* ServicesViewController.swift in Sources */,
+				F70A0A5C20630482008A6189 /* DNSSDBrowser.m in Sources */,
+				F7695D9F2079941F00A0AB54 /* ServiceInfoViewController.swift in Sources */,
+				F7695DA1207A3F5A00A0AB54 /* ServicesViewModel.swift in Sources */,
+				F7B3CC9D205D74B900A72DF0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F7B3CCA2205D74B900A72DF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7B3CCA3205D74B900A72DF0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7B3CCA7205D74B900A72DF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		F7B3CCA8205D74B900A72DF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		F7B3CCAA205D74B900A72DF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Francis/Francis.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Francis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Francis/Francis-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F7B3CCAB205D74B900A72DF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Francis/Francis.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Francis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Francis/Francis-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7B3CC94205D74B900A72DF0 /* Build configuration list for PBXProject "Francis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7B3CCA7205D74B900A72DF0 /* Debug */,
+				F7B3CCA8205D74B900A72DF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7B3CCA9205D74B900A72DF0 /* Build configuration list for PBXNativeTarget "Francis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7B3CCAA205D74B900A72DF0 /* Debug */,
+				F7B3CCAB205D74B900A72DF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7B3CC91205D74B900A72DF0 /* Project object */;
+}
