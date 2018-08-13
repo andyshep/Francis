@@ -18,7 +18,6 @@
 		F7B3CC9F205D74B900A72DF0 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */; };
 		F7B3CCA1205D74B900A72DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */; };
 		F7B3CCA4205D74B900A72DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA2205D74B900A72DF0 /* Main.storyboard */; };
-		F7BB97C12105504000C0CBB3 /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F7EEAE732067221400EE1FEA /* ServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */; };
 		F7EEAE772067500100EE1FEA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; };
 		F7EEAE782067500100EE1FEA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F7BB97C12105504000C0CBB3 /* RxSwiftExt.framework in Embed Frameworks */,
 				F7EEAE7A2067500100EE1FEA /* RxCocoa.framework in Embed Frameworks */,
 				F7EEAE782067500100EE1FEA /* RxSwift.framework in Embed Frameworks */,
 			);
@@ -49,7 +47,6 @@
 		F70A0A5D206304C0008A6189 /* DNSSDService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSDService.h; sourceTree = "<group>"; };
 		F70A0A5E206304C0008A6189 /* DNSSDService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSDService.m; sourceTree = "<group>"; };
 		F70A0A602066FB51008A6189 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		F712532520DE73E000BE6683 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		F717F531207AB5DF00532434 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		F717F535207AF64C00532434 /* DNSSDInterfaceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSSDInterfaceType.h; sourceTree = "<group>"; };
 		F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DNSSDInterfaceType+String.swift"; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 		F7B3CCA5205D74B900A72DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7B3CCA6205D74B900A72DF0 /* Francis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Francis.entitlements; sourceTree = "<group>"; };
 		F7B3CCB1205EE58700A72DF0 /* Francis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Francis-Bridging-Header.h"; sourceTree = "<group>"; };
-		F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/Mac/RxSwiftExt.framework; sourceTree = "<group>"; };
 		F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBrowser.swift; sourceTree = "<group>"; };
 		F7EEAE752067500100EE1FEA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		F7EEAE762067500100EE1FEA /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 		F7B3CC90205D74B900A72DF0 = {
 			isa = PBXGroup;
 			children = (
-				F7BB97C02105504000C0CBB3 /* RxSwiftExt.framework */,
 				F7EEAE762067500100EE1FEA /* RxCocoa.framework */,
 				F7EEAE752067500100EE1FEA /* RxSwift.framework */,
 				F7B3CC9B205D74B900A72DF0 /* Francis */,
@@ -136,7 +131,6 @@
 			children = (
 				F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */,
 				F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */,
-				F712532520DE73E000BE6683 /* Service.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

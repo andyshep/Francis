@@ -86,8 +86,6 @@
 
 @property (assign, readwrite, nullable) id <DNSSDBrowserDelegate> delegate;
 
-- (void)enumerateDomains;
-
 /**
  Starts a browse.  Starting a browse on a browser that is currently browsing
  is a no-op.

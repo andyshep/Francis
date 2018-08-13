@@ -118,8 +118,8 @@
 @property (assign, readwrite, nullable) id<DNSSDServiceDelegate> delegate;
 
 /**
- Starts a resolve.  Starting a resolve on a service that is currently resolving
- is a no-op.  If the resolve does not complete within 30 seconds, it will fail
+ Starts a resolve. Starting a resolve on a service that is currently resolving
+ is a no-op. If the resolve does not complete within 30 seconds, it will fail
  with a time out.
  */
 - (void)startResolveOnInterface:(DNSSDInterfaceType)interface;
@@ -127,12 +127,13 @@
 
 /**
  Starts the operations necessary to find an IP address of a device
- over the specified interface
+ over the specified interface. If the address cannot be found within 30 seconds,
+ it will fail with a time out.
  */
 - (void)startGetAddressOnInterface:(DNSSDInterfaceType)interface;
 
 /**
- Stops a resolve.  Stopping a resolve on a service that is not resolving is a no-op.
+ Stops a resolve. Stopping a resolve on a service that is not resolving is a no-op.
  */
 - (void)stop;
 

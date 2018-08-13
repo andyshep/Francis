@@ -166,11 +166,6 @@ static void BrowseReplyCallback(
     }
 }
 
-static void EnumReplyCallback(DNSServiceRef sdRef, DNSServiceFlags flags, uint32_t interfaceIndex, DNSServiceErrorType errorCode, const char *replyDomain, void *context) {
-    
-    NSLog(@"domain: %s", replyDomain);
-}
-
 - (void)startBrowseOnInterface:(DNSSDInterfaceType)interface
     // See comment in header.
 {
@@ -222,25 +217,6 @@ static void EnumReplyCallback(DNSServiceRef sdRef, DNSServiceFlags flags, uint32
     // See comment in header.
 {
     [self stopWithError:nil notify:NO];
-}
-
-- (void)enumerateDomains {
-    
-    DNSServiceRef  serviceRef;
-    DNSServiceErrorType     errorCode;
-    
-    errorCode = DNSServiceEnumerateDomains(&serviceRef,
-                                           kDNSServiceFlagsBrowseDomains,
-                                           kDNSServiceInterfaceIndexAny,
-                                           EnumReplyCallback,
-                                           (__bridge void *)(self));
-    
-    if (errorCode != kDNSServiceErr_NoError) {
-        NSLog(@"error occured");
-    } else {
-        NSLog(@"no error");
-        DNSServiceProcessResult(serviceRef);
-    }
 }
 
 @end

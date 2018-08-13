@@ -45,7 +45,8 @@ final class ServicesViewModel {
             .disposed(by: bag)
         
         refreshEvent
-            .subscribe(onNext: { [weak self] _ in
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] _ in
                 self?.handleRefresh(on: interface)
             })
             .disposed(by: bag)

@@ -19,14 +19,26 @@ class WindowController: NSWindowController {
     
     lazy private var servicesViewController: ServicesViewController = {
         guard let splitViewController = contentViewController as? NSSplitViewController else { fatalError() }
-        guard let viewController = splitViewController.children.first as? ServicesViewController else { fatalError() }
-        return viewController
+        
+        if #available(macOS 10.14, *) {
+            guard let viewController = splitViewController.children.first as? ServicesViewController else { fatalError() }
+            return viewController
+        } else {
+            guard let viewController = splitViewController.splitViewItems[0].viewController as? ServicesViewController else { fatalError() }
+            return viewController
+        }
     }()
     
     lazy private var serviceInfoViewController: ServiceInfoViewController = {
         guard let splitViewController = contentViewController as? NSSplitViewController else { fatalError() }
-        guard let viewController = splitViewController.children.last as? ServiceInfoViewController else { fatalError() }
-        return viewController
+        
+        if #available(macOS 10.14, *) {
+            guard let viewController = splitViewController.children.last as? ServiceInfoViewController else { fatalError() }
+            return viewController
+        } else {
+            guard let viewController = splitViewController.splitViewItems[1].viewController as? ServiceInfoViewController else { fatalError() }
+            return viewController
+        }
     }()
     
     @objc private var serviceTypes: [DNSSDService] = []
@@ -106,7 +118,8 @@ extension WindowController {
                 let viewModel = ServicesViewModel(service: service, interface: interface)
                 return viewModel
             }
-            .subscribe(onNext: { [weak self] viewModel in
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] (viewModel) in
                 guard let this = self else { return }
                 
                 this.servicesViewController.representedObject = viewModel
@@ -129,7 +142,8 @@ extension WindowController {
                 let viewModel = ServiceViewModel(service: service, interface: interface)
                 return viewModel
             }
-            .subscribe(onNext: { [weak self] viewModel in
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] (viewModel) in
                 guard let this = self else { return }
                 
                 this.serviceInfoViewController.representedObject = viewModel
@@ -149,7 +163,8 @@ extension WindowController {
                 let viewModel = ServiceTypesViewModel(interface: interface)
                 return viewModel
             }
-            .subscribe(onNext: { [weak self] viewModel in
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self ] (viewModel) in
                 guard let this = self else { return }
                 
                 this.serviceTypesViewModel = viewModel

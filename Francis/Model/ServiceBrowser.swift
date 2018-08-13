@@ -25,8 +25,6 @@ final class ServiceBrowser: NSObject {
     private var _services: [DNSSDService] = []
     
     func browseForType(_ type: String, domain: String = "local") {
-        // _appletv-v2._tcp
-        // _services._dns-sd._udp
         stopBrowsing()
         _services = []
         servicesSubject.onNext(_services)
@@ -52,19 +50,17 @@ extension ServiceBrowser: DNSSDBrowserDelegate {
     }
     
     func dnssdBrowser(_ browser: DNSSDBrowser, didAdd service: DNSSDService, moreComing: Bool) {
-        // add service to list
-        
         guard !_services.contains(service) else { return }
         
         _services.append(service)
-        
-        // trigger next event
         servicesSubject.onNext(_services)
     }
     
     func dnssdBrowser(_ browser: DNSSDBrowser, didNotBrowse error: Error?) {
-        guard let error = error else { return print("error browsing") }
-        // FIXME
+        guard let error = error else {
+            return print("\(#function) unhandled error")
+        }
+        
         servicesSubject.onError(error)
     }
 }

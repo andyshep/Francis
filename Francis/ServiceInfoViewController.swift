@@ -31,18 +31,20 @@ class ServiceInfoViewController: NSViewController {
         tableView.bind(.selectionIndexes, to: entriesController, withKeyPath: "selectionIndexes")
         
         self.rx.observe(ServiceViewModel.self, "representedObject")
-            .subscribe(onNext: { [weak self] (viewModel) in
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] (representedObject) in
                 guard let this = self else { return }
-                guard let viewModel = viewModel else {
+                
+                guard let viewModel = representedObject else {
                     this.willChangeValue(for: \.entries)
                     this.entries = [:]
                     this.didChangeValue(for: \.entries)
                     return
                 }
-
+                
                 let service = viewModel.service
                 let interface = viewModel.interface
-
+                
                 service.delegate = this
                 service.startResolve(on: interface)
             })
@@ -61,13 +63,9 @@ class ServiceInfoViewController: NSViewController {
 }
 
 extension ServiceInfoViewController: DNSSDServiceDelegate {
-//    func dnssdServiceWillResolve(_ service: DNSSDService) {
-//        print("will resolve: \(service)")
-//    }
     
     func dnssdService(_ service: DNSSDService, didNotResolve error: Error?) {
-        guard let error = error else { return }
-        print("did not resolve: \(error)")
+        print("\(#function): unhandled \(error.debugDescription)")
     }
     
     func dnssdServiceDidResolveAddress(_ service: DNSSDService) {

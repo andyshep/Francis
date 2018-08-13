@@ -10,7 +10,6 @@ import Cocoa
 
 import RxSwift
 import RxCocoa
-import RxSwiftExt
 
 class ServicesViewController: NSViewController {
     
@@ -36,16 +35,17 @@ class ServicesViewController: NSViewController {
         tableView.bind(.selectionIndexes, to: servicesController, withKeyPath: "selectionIndexes")
         
         self.rx.observe(Any.self, "representedObject")
-            .subscribe(onNext: { [weak self] (viewModel) in
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] (representedObject) in
                 guard let this = self else { return }
-
-                guard let viewModel = viewModel as? ServicesViewModel else {
+                
+                guard let viewModel = representedObject as? ServicesViewModel else {
                     this.willChangeValue(for: \.services)
                     this.services = []
                     this.didChangeValue(for: \.services)
                     return
                 }
-
+                
                 this.bindTo(viewModel: viewModel)
                 viewModel.refreshEvent.onNext(())
             })
@@ -68,7 +68,7 @@ private extension ServicesViewController {
     }
     
     private func handleError(_ error: Error) {
-        print("error: \(error)")
+        print("\(#function): unhandled error: \(error)")
     }
     
     private func updateServiceLabel(with count: Int) {
