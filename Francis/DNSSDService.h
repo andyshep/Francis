@@ -115,7 +115,7 @@
 
 // properties that you can change any time
 
-@property (assign, readwrite, nullable) id<DNSSDServiceDelegate> delegate;
+@property (weak, readwrite, nullable) id<DNSSDServiceDelegate> delegate;
 
 /**
  Starts a resolve. Starting a resolve on a service that is currently resolving
