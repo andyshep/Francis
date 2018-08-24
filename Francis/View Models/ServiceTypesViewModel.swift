@@ -27,10 +27,7 @@ final class ServiceTypesViewModel {
         refreshEvent
             .asObservable()
             .subscribe(onNext: { [weak self] (interface) in
-                print("need to handle interface: \(interface)")
                 self?.stopAndRefreshBrowsing(on: interface)
-            }, onError: { (error) in
-                //
             })
             .disposed(by: bag)
         
@@ -59,7 +56,7 @@ private extension ServiceTypesViewModel {
     }
     
     private func handleError(_ error: Error) {
-        print("error: \(error)")
+        print("\(#function): unhandled error: \(error)")
         browser.stopBrowsing()
     }
     

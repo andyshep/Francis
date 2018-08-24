@@ -65,7 +65,7 @@ private extension ServicesViewModel {
     }
     
     private func handleError(_ error: Error) {
-        print("error: \(error)")
+        print("\(#function) unhandled error: \(error)")
 //        browser.stopBrowsing()
     }
 }

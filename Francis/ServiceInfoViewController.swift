@@ -69,7 +69,7 @@ extension ServiceInfoViewController: DNSSDServiceDelegate {
     }
     
     func dnssdServiceDidResolveAddress(_ service: DNSSDService) {
-        guard let entries = service.entries else { return print("missing TXT record entries") }
+        guard let entries = service.entries else { return print("\(#function): missing TXT record entries") }
         
         self.willChangeValue(for: \.entries)
         self.entries = entries
