@@ -200,6 +200,7 @@ extension WindowController {
             }
             .filter { $0 != nil }
             .asDriver(onErrorJustReturn: DNSSDInterfaceType.any)
+            .debounce(0.5)
             .drive(onNext: { [weak self] (interface) in
                 guard let interface = interface else { return }
                 self?.serviceTypesViewModel.refreshEvent.onNext((interface))
