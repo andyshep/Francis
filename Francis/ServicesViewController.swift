@@ -22,6 +22,7 @@ class ServicesViewController: NSViewController {
     lazy var servicesController: NSArrayController = {
         let controller = NSArrayController()
         controller.bind(.contentArray, to: self, withKeyPath: "services")
+        controller.preservesSelection = true
         
         return controller
     }()
