@@ -8,17 +8,17 @@ Francis is macOS app for discovering Bonjour services on the local network. It i
 * Swift 4.2
 * Carthage
 
-## Install
+## Installation
 
-`git clone`
-`carthage update --no-use-binaries --platform macOS`
-`open Francis.xcodeproj`
+```
+git clone git@github.com:andyshep/Francis.git
+carthage update --no-use-binaries --platform macOS
+open Francis.xcodeproj
+```
 
 ## Screenshot
 
 ![](https://i.imgur.com/QdiT26z.gif)
-
-[Imgur]()
 
 ## Artwork
 
