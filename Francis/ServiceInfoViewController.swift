@@ -30,24 +30,29 @@ class ServiceInfoViewController: NSViewController {
         tableView.bind(.content, to: entriesController, withKeyPath: "arrangedObjects")
         tableView.bind(.selectionIndexes, to: entriesController, withKeyPath: "selectionIndexes")
         
-        self.rx.observe(ServiceViewModel.self, "representedObject")
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] (representedObject) in
+        self.rx.observe(Any.self, "representedObject")
+            .do(onNext: { [weak self] (representedObject) in
+                guard let this = self else { return }
+                guard representedObject == nil else { return }
+
+                this.willChangeValue(for: \.entries)
+                this.entries = [:]
+                this.didChangeValue(for: \.entries)
+            })
+            .map { $0 as? ServiceViewModel }
+            .catchErrorJustReturn(nil)
+            .filterNils()
+            .flatMapLatest { (viewModel) -> Observable<[String: String]> in
+                return viewModel.entries
+            }
+            .do(onNext: { [weak self] entries in
                 guard let this = self else { return }
                 
-                guard let viewModel = representedObject else {
-                    this.willChangeValue(for: \.entries)
-                    this.entries = [:]
-                    this.didChangeValue(for: \.entries)
-                    return
-                }
-                
-                let service = viewModel.service
-                let interface = viewModel.interface
-                
-                service.delegate = this
-                service.startResolve(on: interface)
+                this.willChangeValue(for: \.entries)
+                this.entries = entries
+                this.didChangeValue(for: \.entries)
             })
+            .subscribe()
             .disposed(by: bag)
     }
     
@@ -59,25 +64,5 @@ class ServiceInfoViewController: NSViewController {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([.string], owner: nil)
         pasteboard.setString(value, forType: .string)
-    }
-}
-
-extension ServiceInfoViewController: DNSSDServiceDelegate {
-    
-    func dnssdService(_ service: DNSSDService, didNotResolve error: Error?) {
-        print("\(#function): unhandled \(error.debugDescription)")
-    }
-    
-    func dnssdServiceDidResolveAddress(_ service: DNSSDService) {
-        guard let entries = service.entries else { return print("\(#function): missing TXT record entries") }
-        
-        self.willChangeValue(for: \.entries)
-        self.entries = entries
-        self.didChangeValue(for: \.entries)
-    }
-    
-    func dnssdServiceDidStop(_ service: DNSSDService) {
-        service.stop()
-        service.delegate = nil
     }
 }

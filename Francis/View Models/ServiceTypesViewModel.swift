@@ -12,62 +12,38 @@ import RxSwift
 
 final class ServiceTypesViewModel {
     
-    let refreshEvent = PublishSubject<DNSSDInterfaceType>()
-    
-    var serviceTypes: Observable<[DNSSDService]> {
-        return servicesSubject.asObservable()
+    var refreshEvent: AnyObserver<Void> {
+        return _refreshEvent.asObserver()
     }
+    private let _refreshEvent = PublishSubject<Void>()
     
-    private let servicesSubject = BehaviorRelay<[DNSSDService]>(value: [])
+    var serviceTypes: Observable<[NetService]> {
+        return _services.asObservable()
+    }
+    private let _services = BehaviorRelay<[NetService]>(value: [])
+    
+    private let browser = NetServiceBrowser()
     private let bag = DisposeBag()
     
-    private var browser = ServiceBrowser()
-    
-    init(interface: DNSSDInterfaceType) {
-        refreshEvent
+    init() {
+        _refreshEvent
             .asObservable()
-            .subscribe(onNext: { [weak self] (interface) in
-                self?.stopAndRefreshBrowsing(on: interface)
+            .subscribe(onNext: { [weak self] in
+                self?.stopAndRefreshBrowsing()
             })
             .disposed(by: bag)
         
-        bindToServiceBrowser()
-        
-        browser.browseForType("_services._dns-sd._udp")
-        browser.startBrowsing(on: interface)
+        browser.rx.searchForSearchTypes()
+            .observeOn(MainScheduler.instance)
+            .bind(to: _services)
+            .disposed(by: bag)
     }
     
     deinit {
-        browser.stopBrowsing()
-    }
-}
-
-private extension ServiceTypesViewModel {
-    private func bindToServiceBrowser() {
-        browser.services
-            .subscribe(onNext: { [weak self] (serviceNodes) in
-                self?.servicesSubject.accept(serviceNodes)
-            }, onError: { [weak self] (error) in
-                self?.handleError(error)
-            }, onCompleted: { [weak self] in
-                self?.browser.stopBrowsing()
-            })
-            .disposed(by: bag)
+        browser.stop()
     }
     
-    private func handleError(_ error: Error) {
-        print("\(#function): unhandled error: \(error)")
-        browser.stopBrowsing()
-    }
-    
-    private func stopAndRefreshBrowsing(on interface: DNSSDInterfaceType) {
-        browser.stopBrowsing()
-        servicesSubject.accept([])
-        
-        self.browser = ServiceBrowser()
-        bindToServiceBrowser()
-        
-        browser.browseForType("_services._dns-sd._udp")
-        browser.startBrowsing(on: interface)
+    private func stopAndRefreshBrowsing() {
+        // TODO: implement
     }
 }

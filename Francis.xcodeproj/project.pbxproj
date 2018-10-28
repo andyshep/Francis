@@ -7,23 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F70A0A5C20630482008A6189 /* DNSSDBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A5B20630482008A6189 /* DNSSDBrowser.m */; };
-		F70A0A5F206304C0008A6189 /* DNSSDService.m in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A5E206304C0008A6189 /* DNSSDService.m */; };
 		F70A0A612066FB51008A6189 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70A0A602066FB51008A6189 /* WindowController.swift */; };
 		F717F532207AB5DF00532434 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717F531207AB5DF00532434 /* ServiceViewModel.swift */; };
-		F7640C73207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */; };
 		F7695D9F2079941F00A0AB54 /* ServiceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */; };
 		F7695DA1207A3F5A00A0AB54 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */; };
 		F7B3CC9D205D74B900A72DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CC9C205D74B900A72DF0 /* AppDelegate.swift */; };
 		F7B3CC9F205D74B900A72DF0 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */; };
 		F7B3CCA1205D74B900A72DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */; };
 		F7B3CCA4205D74B900A72DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B3CCA2205D74B900A72DF0 /* Main.storyboard */; };
-		F7EEAE732067221400EE1FEA /* ServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */; };
+		F7BA937A21850BC4003B5BF7 /* RxNetServiceBrowserDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA937921850BC4003B5BF7 /* RxNetServiceBrowserDelegateProxy.swift */; };
+		F7BA937C21850CA0003B5BF7 /* NetServiceBrowser+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA937B21850CA0003B5BF7 /* NetServiceBrowser+Rx.swift */; };
+		F7BA937F218543C2003B5BF7 /* RxNetServiceDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA937E218543C2003B5BF7 /* RxNetServiceDelegateProxy.swift */; };
+		F7BA938121854442003B5BF7 /* NetService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA938021854442003B5BF7 /* NetService+Rx.swift */; };
 		F7EEAE772067500100EE1FEA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; };
 		F7EEAE782067500100EE1FEA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE752067500100EE1FEA /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F7EEAE792067500100EE1FEA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE762067500100EE1FEA /* RxCocoa.framework */; };
 		F7EEAE7A2067500100EE1FEA /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEAE762067500100EE1FEA /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F7EEAE7D2068378800EE1FEA /* ServiceTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */; };
+		F7FDA58621738F580051B145 /* ObservableType+FilterNils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FDA58521738F580051B145 /* ObservableType+FilterNils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,14 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F70A0A5A20630481008A6189 /* DNSSDBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSDBrowser.h; sourceTree = "<group>"; };
-		F70A0A5B20630482008A6189 /* DNSSDBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSDBrowser.m; sourceTree = "<group>"; };
-		F70A0A5D206304C0008A6189 /* DNSSDService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSDService.h; sourceTree = "<group>"; };
-		F70A0A5E206304C0008A6189 /* DNSSDService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSDService.m; sourceTree = "<group>"; };
 		F70A0A602066FB51008A6189 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		F717F531207AB5DF00532434 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
-		F717F535207AF64C00532434 /* DNSSDInterfaceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSSDInterfaceType.h; sourceTree = "<group>"; };
-		F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DNSSDInterfaceType+String.swift"; sourceTree = "<group>"; };
 		F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInfoViewController.swift; sourceTree = "<group>"; };
 		F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
 		F7B3CC99205D74B900A72DF0 /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,11 +54,14 @@
 		F7B3CCA3205D74B900A72DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7B3CCA5205D74B900A72DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7B3CCA6205D74B900A72DF0 /* Francis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Francis.entitlements; sourceTree = "<group>"; };
-		F7B3CCB1205EE58700A72DF0 /* Francis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Francis-Bridging-Header.h"; sourceTree = "<group>"; };
-		F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBrowser.swift; sourceTree = "<group>"; };
+		F7BA937921850BC4003B5BF7 /* RxNetServiceBrowserDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNetServiceBrowserDelegateProxy.swift; sourceTree = "<group>"; };
+		F7BA937B21850CA0003B5BF7 /* NetServiceBrowser+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetServiceBrowser+Rx.swift"; sourceTree = "<group>"; };
+		F7BA937E218543C2003B5BF7 /* RxNetServiceDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNetServiceDelegateProxy.swift; sourceTree = "<group>"; };
+		F7BA938021854442003B5BF7 /* NetService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetService+Rx.swift"; sourceTree = "<group>"; };
 		F7EEAE752067500100EE1FEA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		F7EEAE762067500100EE1FEA /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
 		F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypesViewModel.swift; sourceTree = "<group>"; };
+		F7FDA58521738F580051B145 /* ObservableType+FilterNils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+FilterNils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				F7EEAE7C2068378800EE1FEA /* ServiceTypesViewModel.swift */,
-				F717F531207AB5DF00532434 /* ServiceViewModel.swift */,
 				F7695DA0207A3F5A00A0AB54 /* ServicesViewModel.swift */,
+				F717F531207AB5DF00532434 /* ServiceViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -115,9 +113,7 @@
 				F7B3CC9E205D74B900A72DF0 /* ServicesViewController.swift */,
 				F7695D9E2079941F00A0AB54 /* ServiceInfoViewController.swift */,
 				F7359487207AADA100DC3907 /* View Models */,
-				F7C1C088206FF69300984097 /* Model */,
-				F7B3CCB1205EE58700A72DF0 /* Francis-Bridging-Header.h */,
-				F7EEAE7420674EE700EE1FEA /* DNSSDSample */,
+				F7BA937D21854367003B5BF7 /* Extensions */,
 				F7B3CCA0205D74B900A72DF0 /* Assets.xcassets */,
 				F7B3CCA2205D74B900A72DF0 /* Main.storyboard */,
 				F7B3CCA5205D74B900A72DF0 /* Info.plist */,
@@ -126,25 +122,16 @@
 			path = Francis;
 			sourceTree = "<group>";
 		};
-		F7C1C088206FF69300984097 /* Model */ = {
+		F7BA937D21854367003B5BF7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F7EEAE722067221400EE1FEA /* ServiceBrowser.swift */,
-				F7640C72207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift */,
+				F7FDA58521738F580051B145 /* ObservableType+FilterNils.swift */,
+				F7BA937921850BC4003B5BF7 /* RxNetServiceBrowserDelegateProxy.swift */,
+				F7BA937B21850CA0003B5BF7 /* NetServiceBrowser+Rx.swift */,
+				F7BA937E218543C2003B5BF7 /* RxNetServiceDelegateProxy.swift */,
+				F7BA938021854442003B5BF7 /* NetService+Rx.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F7EEAE7420674EE700EE1FEA /* DNSSDSample */ = {
-			isa = PBXGroup;
-			children = (
-				F70A0A5A20630481008A6189 /* DNSSDBrowser.h */,
-				F70A0A5B20630482008A6189 /* DNSSDBrowser.m */,
-				F70A0A5D206304C0008A6189 /* DNSSDService.h */,
-				F70A0A5E206304C0008A6189 /* DNSSDService.m */,
-				F717F535207AF64C00532434 /* DNSSDInterfaceType.h */,
-			);
-			name = DNSSDSample;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,17 +212,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F70A0A5F206304C0008A6189 /* DNSSDService.m in Sources */,
+				F7BA937F218543C2003B5BF7 /* RxNetServiceDelegateProxy.swift in Sources */,
 				F70A0A612066FB51008A6189 /* WindowController.swift in Sources */,
 				F717F532207AB5DF00532434 /* ServiceViewModel.swift in Sources */,
-				F7640C73207C3F0B00D8C474 /* DNSSDInterfaceType+String.swift in Sources */,
 				F7EEAE7D2068378800EE1FEA /* ServiceTypesViewModel.swift in Sources */,
-				F7EEAE732067221400EE1FEA /* ServiceBrowser.swift in Sources */,
 				F7B3CC9F205D74B900A72DF0 /* ServicesViewController.swift in Sources */,
-				F70A0A5C20630482008A6189 /* DNSSDBrowser.m in Sources */,
+				F7BA937C21850CA0003B5BF7 /* NetServiceBrowser+Rx.swift in Sources */,
+				F7BA937A21850BC4003B5BF7 /* RxNetServiceBrowserDelegateProxy.swift in Sources */,
+				F7FDA58621738F580051B145 /* ObservableType+FilterNils.swift in Sources */,
 				F7695D9F2079941F00A0AB54 /* ServiceInfoViewController.swift in Sources */,
 				F7695DA1207A3F5A00A0AB54 /* ServicesViewModel.swift in Sources */,
 				F7B3CC9D205D74B900A72DF0 /* AppDelegate.swift in Sources */,
+				F7BA938121854442003B5BF7 /* NetService+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -357,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -381,7 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Francis/Francis-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -402,7 +390,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Francis/Francis-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

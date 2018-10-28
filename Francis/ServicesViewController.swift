@@ -13,8 +13,8 @@ import RxCocoa
 
 class ServicesViewController: NSViewController {
     
-    @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var statusLabel: NSButton!
+    @IBOutlet private weak var tableView: NSTableView!
+    @IBOutlet private weak var statusLabel: NSButton!
     
     private let bag = DisposeBag()
     private var viewModel: ServicesViewModel!
@@ -27,7 +27,7 @@ class ServicesViewController: NSViewController {
         return controller
     }()
     
-    @objc private var services: [DNSSDService] = []
+    @objc private var services: [NetService] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +36,23 @@ class ServicesViewController: NSViewController {
         tableView.bind(.selectionIndexes, to: servicesController, withKeyPath: "selectionIndexes")
         
         self.rx.observe(Any.self, "representedObject")
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] (representedObject) in
+            .do(onNext: { [weak self] (representedObject) in
                 guard let this = self else { return }
+                guard representedObject == nil else { return }
                 
-                guard let viewModel = representedObject as? ServicesViewModel else {
-                    this.willChangeValue(for: \.services)
-                    this.services = []
-                    this.didChangeValue(for: \.services)
-                    return
-                }
-                
+                this.willChangeValue(for: \.services)
+                this.services = []
+                this.didChangeValue(for: \.services)
+            })
+            .map { $0 as? ServicesViewModel }
+            .catchErrorJustReturn(nil)
+            .filterNils()
+            .do(onNext: { [weak self] (viewModel) in
+                guard let this = self else { return }
                 this.bindTo(viewModel: viewModel)
                 viewModel.refreshEvent.onNext(())
             })
+            .subscribe()
             .disposed(by: bag)
     }
 }
@@ -62,7 +65,7 @@ private extension ServicesViewController {
                 self?.willChangeValue(for: \.services)
                 self?.services = services
                 self?.didChangeValue(for: \.services)
-                
+
                 self?.updateServiceLabel(with: services.count)
             })
             .disposed(by: bag)

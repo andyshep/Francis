@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -460,34 +459,10 @@
                                     </popUpButton>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="rKW-lg-EYF"/>
-                                <toolbarItem implicitItemIdentifier="568F5535-F023-4BC4-B324-08BCE32BA51E" label="Interface" paletteLabel="Interface" id="dEd-nN-4k7">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="28"/>
-                                    <size key="maxSize" width="150" height="28"/>
-                                    <popUpButton key="view" verticalHuggingPriority="750" id="IeU-ZE-aRI">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="Any" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="100" imageScaling="proportionallyDown" inset="2" selectedItem="ip1-yh-fom" id="TBf-8e-fDC" userLabel="Interfaces">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="9Va-to-you">
-                                                <items>
-                                                    <menuItem title="Any" state="on" tag="100" id="ip1-yh-fom"/>
-                                                    <menuItem title="LocalOnly" tag="100" id="MaW-dT-o83"/>
-                                                    <menuItem title="Unicast" tag="100" id="vp4-fk-jsn"/>
-                                                    <menuItem title="P2P" tag="100" id="zep-K4-xWb" userLabel="P2P"/>
-                                                    <menuItem title="BLE" tag="100" id="fav-vt-UJq" userLabel="BLE"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
-                                    </popUpButton>
-                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="rKW-lg-EYF"/>
                                 <toolbarItem reference="5Qb-xB-S5X"/>
-                                <toolbarItem reference="rKW-lg-EYF"/>
-                                <toolbarItem reference="dEd-nN-4k7"/>
                                 <toolbarItem reference="ECn-1K-hvZ"/>
                                 <toolbarItem reference="o8H-TF-00w"/>
                             </defaultToolbarItems>
@@ -498,7 +473,6 @@
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="interfacesButton" destination="IeU-ZE-aRI" id="meU-LG-RPq"/>
                         <outlet property="reloadButton" destination="WrB-GT-aIb" id="KQg-6h-FYn"/>
                         <outlet property="servicesListButton" destination="iiK-dD-w7D" id="Ode-CO-EU0"/>
                         <outlet property="toolbar" destination="DUu-gR-Bd2" id="I3y-Ur-a6Z"/>
@@ -680,7 +654,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="BlW-MO-zTZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TOb-vL-JfC">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -720,7 +694,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ayb-wa-HF2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="517" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="517" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="6vg-Oa-ok0">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

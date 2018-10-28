@@ -12,12 +12,28 @@ import RxSwift
 
 final class ServiceViewModel {
     
-    let service: DNSSDService
-    let interface: DNSSDInterfaceType
+    var entries: Observable<[String: String]> {
+        return _entries
+    }
+    private let _entries = PublishSubject<[String: String]>()
     
-    init(service: DNSSDService, interface: DNSSDInterfaceType) {
-        self.service = service
-        self.interface = interface
+    private let bag = DisposeBag()
+    
+    init(service: NetService) {
+        service.rx
+            .resolve(withTimeout: 60.0)
+            .map { (service) -> [String: Data] in
+                guard let data = service.txtRecordData() else { return [:] }
+                let dictionary = NetService.dictionary(fromTXTRecord: data)
+                
+                return dictionary
+            }
+            .map { dictionary -> [String: String] in
+                return dictionary.mapValues { (value) -> String in
+                    return String(data: value, encoding: .utf8) ?? ""
+                }
+            }
+            .bind(to: _entries)
+            .disposed(by: bag)
     }
 }
-

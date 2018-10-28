@@ -12,60 +12,42 @@ import RxSwift
 
 final class ServicesViewModel {
     
-    let refreshEvent = PublishSubject<()>()
-    
-    var services: Observable<[DNSSDService]> {
-        return servicesSubject.asObservable()
+    var refreshEvent: AnyObserver<Void> {
+        return _refreshEvent.asObserver()
     }
+    private let _refreshEvent = PublishSubject<Void>()
     
-    private let servicesSubject = BehaviorRelay<[DNSSDService]>(value: [])
+    var services: Observable<[NetService]> {
+        return _services.asObservable()
+    }
+    private let _services = BehaviorRelay<[NetService]>(value: [])
+    private var _serivcesBackingStore: [NetService] = []
+    
     private let bag = DisposeBag()
+    private let browser = NetServiceBrowser()
     
-    private let browser = ServiceBrowser()
-    
-    let service: DNSSDService
-    let interface: DNSSDInterfaceType
-    
-    private var query: String {
-        return "\(service.name).\(service.type)"
-    }
-    
-    init(service: DNSSDService, interface: DNSSDInterfaceType) {
-        self.service = service
-        self.interface = interface
+    init(service: NetService) {
         
-        browser.services
-            .subscribe(onNext: { [weak self] (serviceNodes) in
-                self?.servicesSubject.accept(serviceNodes)
-            }, onError: { [weak self] (error) in
-                self?.handleError(error)
-            }, onCompleted: { [weak self] in
-                self?.browser.stopBrowsing()
-            })
-            .disposed(by: bag)
-        
-        refreshEvent
-            .asDriver(onErrorJustReturn: ())
-            .drive(onNext: { [weak self] _ in
-                self?.handleRefresh(on: interface)
-            })
+        _refreshEvent
+            .withLatestFrom(Observable.just(service)) { ($0, $1) }
+            .flatMapLatest { (_, service) -> Observable<String> in
+                let type = service.type
+                let range = type.range(of: ".")!
+                let index = type.index(type.startIndex, offsetBy: range.lowerBound.encodedOffset)
+                let prefix = type[..<index]
+                
+                let query = "\(service.name).\(String(prefix))"
+                return Observable.just(query)
+            }
+            .flatMap { [weak self] query -> Observable<[NetService]> in
+                guard let this = self else { fatalError() }
+                return this.browser.rx.searchForServices(type: query)
+            }
+            .bind(to: _services)
             .disposed(by: bag)
     }
-    
-    deinit {
-        browser.stopBrowsing()
-    }
-}
 
-private extension ServicesViewModel {
-    private func handleRefresh(on interface: DNSSDInterfaceType) {
-        browser.stopBrowsing()
-        browser.browseForType(query)
-        browser.startBrowsing(on: interface)
-    }
-    
-    private func handleError(_ error: Error) {
-        print("\(#function) unhandled error: \(error)")
-//        browser.stopBrowsing()
+    deinit {
+        browser.stop()
     }
 }
