@@ -10,6 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+/// Reactive wrapper for `NetService`
 extension Reactive where Base: NetService {
     
     private enum NetServiceRxError: Error {
@@ -21,6 +22,10 @@ extension Reactive where Base: NetService {
         return resolve().map { $0.addressIP4 }.share()
     }
     
+    /// Resolve a service within a given `timeout`.
+    ///
+    /// - Parameter timeout: A duration to wait before the resolve times out.
+    /// - Returns: An `Observable` with the `NetService` after resolution.
     func resolve(withTimeout timeout: TimeInterval = 15.0) -> Observable<NetService> {
         let selector = #selector(
             NetServiceDelegate
@@ -36,7 +41,6 @@ extension Reactive where Base: NetService {
                 
                 return service
             }
-            .share()
         
         base.stop()
         base.resolve(withTimeout: timeout)
@@ -46,6 +50,8 @@ extension Reactive where Base: NetService {
 }
 
 private extension NetService {
+    
+    /// The IPv4 address belonging to a service
     var addressIP4: String? {
         guard let data = addresses?.first else { return nil }
         return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in

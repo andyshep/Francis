@@ -83,7 +83,6 @@
 		F781C40A21972D7400088C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F781C40D21972D7400088C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F781C40F21972D7400088C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F781C41021972D7400088C3F /* Francis_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Francis_macOS.entitlements; sourceTree = "<group>"; };
 		F781C41821972DDF00088C3F /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F781C41A21972DDF00088C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F781C41F21972DDF00088C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,7 +146,6 @@
 				F781C40C21972D7400088C3F /* Main.storyboard */,
 				F781C40A21972D7400088C3F /* Assets.xcassets */,
 				F781C40F21972D7400088C3F /* Info.plist */,
-				F781C41021972D7400088C3F /* Francis_macOS.entitlements */,
 			);
 			path = "Francis-macOS";
 			sourceTree = "<group>";
@@ -156,9 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				F781C41A21972DDF00088C3F /* AppDelegate.swift */,
-				F781C49821973B5800088C3F /* ServiceTypesViewController.swift */,
-				F781C49A2197409C00088C3F /* ServicesViewController.swift */,
-				F781C49C2197444800088C3F /* ServiceViewController.swift */,
+				F781C4E12198C38A00088C3F /* View Controllers */,
 				F781C41E21972DDF00088C3F /* Main.storyboard */,
 				F781C42121972DDF00088C3F /* Assets.xcassets */,
 				F781C42321972DDF00088C3F /* LaunchScreen.storyboard */,
@@ -170,8 +166,8 @@
 		F781C42A21972E8200088C3F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F781C4DC219864AB00088C3F /* ServicesViewController.swift */,
 				F781C4DD219864AB00088C3F /* ServiceTypesViewController.swift */,
+				F781C4DC219864AB00088C3F /* ServicesViewController.swift */,
 				F781C4DB219864AB00088C3F /* ServiceViewController.swift */,
 			);
 			name = "View Controllers";
@@ -238,6 +234,16 @@
 				F781C4CD2198645C00088C3F /* RxSwift.framework.dSYM */,
 			);
 			name = macOS;
+			sourceTree = "<group>";
+		};
+		F781C4E12198C38A00088C3F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F781C49821973B5800088C3F /* ServiceTypesViewController.swift */,
+				F781C49A2197409C00088C3F /* ServicesViewController.swift */,
+				F781C49C2197444800088C3F /* ServiceViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		F7B3CC90205D74B900A72DF0 = {

@@ -10,17 +10,27 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// Reactive wrapper for `NetServiceBrowser`
 extension Reactive where Base: NetServiceBrowser {
     
     private enum NetServiceBrowserRxError: Error {
         case signatureMismatch
     }
     
-    /// 
+    /// Searches for services operating under a `domain`.
+    ///
+    /// - Parameter domain: The domain to search for services in
+    /// - Returns: An `Observable` collection of `NetService` found the `domain`
     func searchForSearchTypes(domain: String = "local.") -> Observable<[NetService]> {
         return searchForServices(type: "_services._dns-sd._udp")
     }
     
+    /// Searches for services for a given `type` operating under a `domain`.
+    ///
+    /// - Parameters:
+    ///   - type: The type of service to search for
+    ///   - domain: The domain to search for services in
+    /// - Returns: An `Observable` collection of `NetService` matching the `domain` and `type`
     func searchForServices(type: String, domain: String = "local.") -> Observable<[NetService]> {
         let selector = #selector(
             NetServiceBrowserDelegate
@@ -44,7 +54,6 @@ extension Reactive where Base: NetServiceBrowser {
                 
                 return moreComing ? [] : services
             }
-            .share()
         
         base.stop()
         base.searchForServices(ofType: type, inDomain: domain)

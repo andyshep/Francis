@@ -23,24 +23,19 @@ final class ServiceViewModel {
     private let _entries = BehaviorRelay<[String: String]>(value: [:])
     
     var title: Observable<String> {
-        return Observable.just(service.name)
+        return _title.asObservable()
     }
+    private let _title = BehaviorRelay<String>(value: "")
     
-    private let service: NetService
     private let bag = DisposeBag()
     
     init(service: NetService) {
         
-        self.service = service
+        _title.accept(service.name)
         
         _refreshEvent
             .flatMapLatest { _ -> Observable<NetService> in
-                let record = service.txtRecordData()
-                if record?.count != 0 {
-                    return Observable.just(service)
-                } else {
-                    return service.rx.resolve()
-                }
+                return service.rx.resolve()
             }
             .observeOn(MainScheduler.instance)
             .withLatestFrom(service.rx.address) { ($0, $1) }
