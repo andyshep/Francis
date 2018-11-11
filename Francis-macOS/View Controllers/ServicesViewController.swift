@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-
 import RxSwift
 import RxCocoa
 
@@ -17,7 +16,6 @@ class ServicesViewController: NSViewController {
     @IBOutlet private weak var statusLabel: NSButton!
     
     private let bag = DisposeBag()
-    private var viewModel: ServicesViewModel!
     
     lazy var servicesController: NSArrayController = {
         let controller = NSArrayController()
@@ -37,19 +35,21 @@ class ServicesViewController: NSViewController {
         
         self.rx.observe(Any.self, "representedObject")
             .do(onNext: { [weak self] (representedObject) in
-                guard let this = self else { return }
                 guard representedObject == nil else { return }
                 
-                this.willChangeValue(for: \.services)
-                this.services = []
-                this.didChangeValue(for: \.services)
+                // if representedObject is nil, clear our the services array
+                self?.willChangeValue(for: \.services)
+                self?.services = []
+                self?.didChangeValue(for: \.services)
             })
             .map { $0 as? ServicesViewModel }
             .catchErrorJustReturn(nil)
             .filterNils()
-            .do(onNext: { [weak self] (viewModel) in
+            .do(onNext: { [weak self] viewModel in
                 guard let this = self else { return }
-                this.bindTo(viewModel: viewModel)
+                
+                // if viewModel is _not_ nil, bind to it and send a refresh
+                this.bind(to: viewModel)
                 viewModel.refreshEvent.onNext(())
             })
             .subscribe()
@@ -58,25 +58,18 @@ class ServicesViewController: NSViewController {
 }
 
 private extension ServicesViewController {
-    private func bindTo(viewModel: ServicesViewModel) {
+    private func bind(to viewModel: ServicesViewModel) {
         viewModel.services
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] (services) in
                 self?.willChangeValue(for: \.services)
                 self?.services = services
                 self?.didChangeValue(for: \.services)
-
-                self?.updateServiceLabel(with: services.count)
             })
             .disposed(by: bag)
     }
     
     private func handleError(_ error: Error) {
         print("\(#function): unhandled error: \(error)")
-    }
-    
-    private func updateServiceLabel(with count: Int) {
-        let descriptor = (count == 1) ? "service found" : "services found"
-        statusLabel.title = "\(count) \(descriptor)"
     }
 }

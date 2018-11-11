@@ -16,6 +16,7 @@ extension Reactive where Base: NetServiceBrowser {
         case signatureMismatch
     }
     
+    /// 
     func searchForSearchTypes(domain: String = "local.") -> Observable<[NetService]> {
         return searchForServices(type: "_services._dns-sd._udp")
     }
@@ -32,18 +33,21 @@ extension Reactive where Base: NetServiceBrowser {
             .proxy(for: base)
             .methodInvoked(selector)
             .map { params -> [NetService] in
-                guard let service = params[1] as? NetService else {
+                guard
+                    let service = params[1] as? NetService,
+                    let moreComing = params[2] as? Bool
+                else {
                     throw NetServiceBrowserRxError.signatureMismatch
                 }
                 
                 services.append(service)
-                return services
-        }
+                
+                return moreComing ? [] : services
+            }
+            .share()
         
-        self.base.searchForServices(
-            ofType: type,
-            inDomain: domain
-        )
+        base.stop()
+        base.searchForServices(ofType: type, inDomain: domain)
         
         return result
     }

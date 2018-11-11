@@ -1,5 +1,5 @@
 //
-//  ServiceInfoViewController.swift
+//  ServiceViewController.swift
 //  Francis
 //
 //  Created by Andrew Shepard on 4/7/18.
@@ -9,7 +9,7 @@
 import Cocoa
 import RxSwift
 
-class ServiceInfoViewController: NSViewController {
+class ServiceViewController: NSViewController {
     
     @IBOutlet private weak var tableView: NSTableView!
     
@@ -32,25 +32,20 @@ class ServiceInfoViewController: NSViewController {
         
         self.rx.observe(Any.self, "representedObject")
             .do(onNext: { [weak self] (representedObject) in
-                guard let this = self else { return }
                 guard representedObject == nil else { return }
 
-                this.willChangeValue(for: \.entries)
-                this.entries = [:]
-                this.didChangeValue(for: \.entries)
+                self?.willChangeValue(for: \.entries)
+                self?.entries = [:]
+                self?.didChangeValue(for: \.entries)
             })
-            .map { $0 as? ServiceViewModel }
+            .map { something in
+                return something as? ServiceViewModel
+            }
             .catchErrorJustReturn(nil)
             .filterNils()
-            .flatMapLatest { (viewModel) -> Observable<[String: String]> in
-                return viewModel.entries
-            }
-            .do(onNext: { [weak self] entries in
-                guard let this = self else { return }
-                
-                this.willChangeValue(for: \.entries)
-                this.entries = entries
-                this.didChangeValue(for: \.entries)
+            .do(onNext: { [weak self] viewModel in
+                self?.bind(to: viewModel)
+                viewModel.refreshEvent.onNext(())
             })
             .subscribe()
             .disposed(by: bag)
@@ -64,5 +59,16 @@ class ServiceInfoViewController: NSViewController {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([.string], owner: nil)
         pasteboard.setString(value, forType: .string)
+    }
+    
+    private func bind(to viewModel: ServiceViewModel) {
+        viewModel.entries
+            .asDriver(onErrorJustReturn: [:])
+            .drive(onNext: { [weak self] (entries) in
+                self?.willChangeValue(for: \.entries)
+                self?.entries = entries
+                self?.didChangeValue(for: \.entries)
+            })
+            .disposed(by: bag)
     }
 }

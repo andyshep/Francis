@@ -22,8 +22,10 @@ final class ServiceTypesViewModel {
     }
     private let _services = BehaviorRelay<[NetService]>(value: [])
     
-    private let browser = NetServiceBrowser()
-    private let bag = DisposeBag()
+    private var browser = NetServiceBrowser()
+    private var browserBag = DisposeBag()
+    
+    private var bag = DisposeBag()
     
     init() {
         _refreshEvent
@@ -33,10 +35,7 @@ final class ServiceTypesViewModel {
             })
             .disposed(by: bag)
         
-        browser.rx.searchForSearchTypes()
-            .observeOn(MainScheduler.instance)
-            .bind(to: _services)
-            .disposed(by: bag)
+        bind(to: browser)
     }
     
     deinit {
@@ -44,6 +43,19 @@ final class ServiceTypesViewModel {
     }
     
     private func stopAndRefreshBrowsing() {
-        // TODO: implement
+        browser.stop()
+        browserBag = DisposeBag()
+        
+        browser = NetServiceBrowser()
+        _services.accept([])
+        
+        bind(to: browser)
+    }
+    
+    private func bind(to browser: NetServiceBrowser) {
+        browser.rx.searchForSearchTypes()
+            .observeOn(MainScheduler.instance)
+            .bind(to: _services)
+            .disposed(by: browserBag)
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Andrew Shepard. All rights reserved.
 //
 
-import AppKit
+import Foundation
 import RxSwift
 import RxCocoa
 
@@ -18,8 +18,6 @@ public final class RxNetServiceBrowserDelegateProxy
     : DelegateProxy<NetServiceBrowser, NetServiceBrowserDelegate>
     , DelegateProxyType
     , NetServiceBrowserDelegate {
-    
-    private let bag = DisposeBag()
     
     private init(parent: NetServiceBrowser) {
         super.init(parentObject: parent, delegateProxy: RxNetServiceBrowserDelegateProxy.self)

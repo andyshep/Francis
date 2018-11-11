@@ -1,18 +1,19 @@
 # Francis
 
-Francis is macOS app for discovering Bonjour services on the local network. It is built around the [DNSSDObjects](https://developer.apple.com/library/archive/samplecode/DNSSDObjects/Introduction/Intro.html#//apple_ref/doc/uid/DTS40011371-Intro-DontLinkElementID_2) sample code from Apple. Nearby services are displayed in an `NSTableView` through RxSwift and Cocoa Bindings.
+Francis is an app for discovering Bonjour services on the local network. It is built with an RxSwift layer on top of `NetServiceBrowser` and `NetService`. The app runs on both macOS and iOS.
 
 ## Requirements
 
 * Xcode 10
 * Swift 4.2
+* macOS 10.14 or iOS 12
 * Carthage
 
 ## Installation
 
 ```
-git clone git@github.com:andyshep/Francis.git
-carthage update --no-use-binaries --platform macOS
+git clone git@github.com:andyshep/Francis.git && cd Francis
+carthage update --no-use-binaries --platform macOS,iOS
 open Francis.xcodeproj
 ```
 

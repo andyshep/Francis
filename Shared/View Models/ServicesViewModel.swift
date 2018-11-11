@@ -21,25 +21,24 @@ final class ServicesViewModel {
         return _services.asObservable()
     }
     private let _services = BehaviorRelay<[NetService]>(value: [])
-    private var _serivcesBackingStore: [NetService] = []
     
     private let bag = DisposeBag()
     private let browser = NetServiceBrowser()
     
     init(service: NetService) {
-        
         _refreshEvent
-            .withLatestFrom(Observable.just(service)) { ($0, $1) }
-            .flatMapLatest { (_, service) -> Observable<String> in
+            .flatMapLatest { Observable.just(service) }
+            .map { service -> String in
                 let type = service.type
                 let range = type.range(of: ".")!
                 let index = type.index(type.startIndex, offsetBy: range.lowerBound.encodedOffset)
                 let prefix = type[..<index]
                 
                 let query = "\(service.name).\(String(prefix))"
-                return Observable.just(query)
+                
+                return query
             }
-            .flatMap { [weak self] query -> Observable<[NetService]> in
+            .flatMapLatest { [weak self] (query) -> Observable<[NetService]> in
                 guard let this = self else { fatalError() }
                 return this.browser.rx.searchForServices(type: query)
             }
