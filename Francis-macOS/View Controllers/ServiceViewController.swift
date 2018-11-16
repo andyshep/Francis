@@ -15,6 +15,7 @@ class ServiceViewController: NSViewController {
     
     @objc private var entries: [String: String] = [:]
     
+    private var viewModelBag = DisposeBag()
     private let bag = DisposeBag()
     
     lazy private var entriesController: NSDictionaryController = {
@@ -62,6 +63,8 @@ class ServiceViewController: NSViewController {
     }
     
     private func bind(to viewModel: ServiceViewModel) {
+        viewModelBag = DisposeBag()
+        
         viewModel.entries
             .asDriver(onErrorJustReturn: [:])
             .drive(onNext: { [weak self] (entries) in
@@ -69,6 +72,6 @@ class ServiceViewController: NSViewController {
                 self?.entries = entries
                 self?.didChangeValue(for: \.entries)
             })
-            .disposed(by: bag)
+            .disposed(by: viewModelBag)
     }
 }

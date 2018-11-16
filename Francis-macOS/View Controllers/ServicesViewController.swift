@@ -15,6 +15,7 @@ class ServicesViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var statusLabel: NSButton!
     
+    private var viewModelBag = DisposeBag()
     private let bag = DisposeBag()
     
     lazy var servicesController: NSArrayController = {
@@ -59,6 +60,8 @@ class ServicesViewController: NSViewController {
 
 private extension ServicesViewController {
     private func bind(to viewModel: ServicesViewModel) {
+        viewModelBag = DisposeBag()
+        
         viewModel.services
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] (services) in
@@ -66,7 +69,7 @@ private extension ServicesViewController {
                 self?.services = services
                 self?.didChangeValue(for: \.services)
             })
-            .disposed(by: bag)
+            .disposed(by: viewModelBag)
     }
     
     private func handleError(_ error: Error) {

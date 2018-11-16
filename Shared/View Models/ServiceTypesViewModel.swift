@@ -55,6 +55,7 @@ final class ServiceTypesViewModel {
     private func bind(to browser: NetServiceBrowser) {
         browser.rx.searchForSearchTypes()
             .observeOn(MainScheduler.instance)
+            .distinctUntilChanged()
             .bind(to: _services)
             .disposed(by: browserBag)
     }

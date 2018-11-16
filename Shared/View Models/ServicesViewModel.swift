@@ -34,14 +34,13 @@ final class ServicesViewModel {
                 let index = type.index(type.startIndex, offsetBy: range.lowerBound.encodedOffset)
                 let prefix = type[..<index]
                 
-                let query = "\(service.name).\(String(prefix))"
-                
-                return query
+                return "\(service.name).\(String(prefix))"
             }
             .flatMapLatest { [weak self] (query) -> Observable<[NetService]> in
-                guard let this = self else { fatalError() }
+                guard let this = self else { return Observable.never() }
                 return this.browser.rx.searchForServices(type: query)
             }
+            .distinctUntilChanged()
             .bind(to: _services)
             .disposed(by: bag)
     }
