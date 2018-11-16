@@ -33,31 +33,43 @@ final class ServiceViewModel {
         
         _title.accept(service.name)
         
+        let addresses = Observable
+            .zip(service.rx.addressIPv4, service.rx.addressIPv6) { ($0, $1) }
+            .map { (addressIPv4, addressIPv6) -> [String: String] in
+                var result: [String: String] = [:]
+                
+                if let addressIPv4 = addressIPv4 {
+                    result["IPv4"] = addressIPv4
+                }
+                if let addressIPv6 = addressIPv6 {
+                    result["IPv6"] = addressIPv6
+                }
+                
+                return result
+        }
+        
         _refreshEvent
             .flatMapLatest { _ -> Observable<NetService> in
                 return service.rx.resolve()
             }
             .observeOn(MainScheduler.instance)
-            .withLatestFrom(service.rx.address) { ($0, $1) }
-            .map { (service, address) -> [String: Data] in
-                guard let data = service.txtRecordData() else {
-                    return [:]
-                }
-                var dictionary = NetService.dictionary(fromTXTRecord: data)
-                
-                if let address = address {
-                    let data = address.data(using: .utf8)
-                    dictionary["IP Address"] = data
-                }
-                return dictionary
+            .map { (service) -> [String: Data] in
+                guard let data = service.txtRecordData() else { return [:] }
+                return NetService.dictionary(fromTXTRecord: data)
             }
-            .map { dictionary -> [String: String] in
-                let result = dictionary.mapValues { (value) -> String in
+            .withLatestFrom(addresses) { ($0, $1) }
+            .map { (dataDictionary, addresses) -> [String: String] in
+                var dictionary = dataDictionary.mapValues { (value) -> String in
                     return String(data: value, encoding: .utf8) ?? ""
                 }
                 
-                return result
+                addresses.forEach { (key, value) in
+                    dictionary[key] = value
+                }
+                
+                return dictionary
             }
+            .distinctUntilChanged()
             .bind(to: _entries)
             .disposed(by: bag)
     }

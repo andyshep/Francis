@@ -17,9 +17,14 @@ extension Reactive where Base: NetService {
         case signatureMismatch
     }
     
-    /// Emits with the IP4 address associated with a `NetService`
-    var address: Observable<String?> {
-        return resolve().map { $0.addressIP4 }.share()
+    /// Emits with the IPv4 address associated with a `NetService`
+    var addressIPv4: Observable<String?> {
+        return resolve().map { $0.addressIPv4 }.share()
+    }
+    
+    /// Emits with the IPv4 address associated with a `NetService`
+    var addressIPv6: Observable<String?> {
+        return resolve().map { $0.addressIPv6 }.share()
     }
     
     /// Resolve a service within a given `timeout`.
@@ -52,18 +57,41 @@ extension Reactive where Base: NetService {
 private extension NetService {
     
     /// The IPv4 address belonging to a service
-    var addressIP4: String? {
-        guard let data = addresses?.first else { return nil }
-        return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in
-            if addressPtr.pointee.sin_family == __uint8_t(AF_INET) {
+    var addressIPv4: String? {
+        return addresses?.compactMap { (data) -> String? in
+            return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in
                 guard
+                    addressPtr.pointee.sin_family == __uint8_t(AF_INET),
                     let bytes = inet_ntoa(addressPtr.pointee.sin_addr),
-                    let ip = String(cString: bytes, encoding: .ascii)
+                    let address = String(cString: bytes, encoding: .ascii)
                 else { return nil }
-                return ip
+                return address
             }
-            
-            return nil
-        }
+        }.first
+    }
+
+    /// The IPv6 address belonging to a service
+    var addressIPv6: String? {
+        return addresses?.compactMap { (data) -> String? in
+            return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in
+                guard
+                    addressPtr.pointee.sin_family == __uint8_t(AF_INET6)
+                else { return nil }
+                
+                return data.withUnsafeBytes { (address6Ptr: UnsafePointer<sockaddr_in6>) -> String? in
+                    let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: Int(INET6_ADDRSTRLEN))
+                    var sin6AddressPtr = address6Ptr.pointee.sin6_addr
+                    
+                    guard
+                        let bytes = inet_ntop(Int32(address6Ptr.pointee.sin6_family),
+                                              &sin6AddressPtr,
+                                              buffer,
+                                              __uint32_t(INET6_ADDRSTRLEN)),
+                        let address = String(cString: bytes, encoding: .ascii)
+                    else { return nil }
+                    return address
+                }
+            }
+        } .first
     }
 }
