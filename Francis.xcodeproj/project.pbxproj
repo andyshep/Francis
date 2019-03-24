@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F74441A621A0466900551552 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A321A0466900551552 /* ServiceViewController.swift */; };
+		F74441A721A0466900551552 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A421A0466900551552 /* ServicesViewController.swift */; };
+		F74441A821A0466900551552 /* ServiceTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A521A0466900551552 /* ServiceTypesViewController.swift */; };
 		F781C40B21972D7400088C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F781C40A21972D7400088C3F /* Assets.xcassets */; };
 		F781C40E21972D7400088C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F781C40C21972D7400088C3F /* Main.storyboard */; };
 		F781C41B21972DDF00088C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C41A21972DDF00088C3F /* AppDelegate.swift */; };
@@ -46,9 +49,6 @@
 		F781C4D72198646900088C3F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F781C4D02198645C00088C3F /* RxSwift.framework */; };
 		F781C4D82198646900088C3F /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F781C4D02198645C00088C3F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F781C4DA2198648A00088C3F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4D92198648A00088C3F /* WindowController.swift */; };
-		F781C4DE219864AB00088C3F /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4DB219864AB00088C3F /* ServiceViewController.swift */; };
-		F781C4DF219864AB00088C3F /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4DC219864AB00088C3F /* ServicesViewController.swift */; };
-		F781C4E0219864AB00088C3F /* ServiceTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4DD219864AB00088C3F /* ServiceTypesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +79,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F74441A321A0466900551552 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
+		F74441A421A0466900551552 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		F74441A521A0466900551552 /* ServiceTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypesViewController.swift; sourceTree = "<group>"; };
 		F781C40421972D7200088C3F /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F781C40A21972D7400088C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F781C40D21972D7400088C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,9 +113,6 @@
 		F781C4CF2198645C00088C3F /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/Mac/RxCocoa.framework.dSYM; sourceTree = "<group>"; };
 		F781C4D02198645C00088C3F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		F781C4D92198648A00088C3F /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		F781C4DB219864AB00088C3F /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceViewController.swift; path = "Francis-macOS/View Controllers/ServiceViewController.swift"; sourceTree = SOURCE_ROOT; };
-		F781C4DC219864AB00088C3F /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesViewController.swift; path = "Francis-macOS/View Controllers/ServicesViewController.swift"; sourceTree = SOURCE_ROOT; };
-		F781C4DD219864AB00088C3F /* ServiceTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceTypesViewController.swift; path = "Francis-macOS/View Controllers/ServiceTypesViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +137,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F74441A221A0466900551552 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F74441A321A0466900551552 /* ServiceViewController.swift */,
+				F74441A421A0466900551552 /* ServicesViewController.swift */,
+				F74441A521A0466900551552 /* ServiceTypesViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		F781C40521972D7200088C3F /* Francis-macOS */ = {
 			isa = PBXGroup;
 			children = (
 				F781C45321972EEE00088C3F /* AppDelegate.swift */,
 				F781C4D92198648A00088C3F /* WindowController.swift */,
-				F781C42A21972E8200088C3F /* View Controllers */,
+				F74441A221A0466900551552 /* View Controllers */,
 				F781C40C21972D7400088C3F /* Main.storyboard */,
 				F781C40A21972D7400088C3F /* Assets.xcassets */,
 				F781C40F21972D7400088C3F /* Info.plist */,
@@ -162,17 +172,6 @@
 			);
 			path = "Francis-iOS";
 			sourceTree = "<group>";
-		};
-		F781C42A21972E8200088C3F /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				F781C4DD219864AB00088C3F /* ServiceTypesViewController.swift */,
-				F781C4DC219864AB00088C3F /* ServicesViewController.swift */,
-				F781C4DB219864AB00088C3F /* ServiceViewController.swift */,
-			);
-			name = "View Controllers";
-			path = "Common/View Controllers";
-			sourceTree = SOURCE_ROOT;
 		};
 		F781C49E219863B400088C3F /* Shared */ = {
 			isa = PBXGroup;
@@ -317,7 +316,7 @@
 				TargetAttributes = {
 					F781C40321972D7200088C3F = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -384,12 +383,12 @@
 				F781C4AD219863B400088C3F /* ServicesViewModel.swift in Sources */,
 				F781C4B1219863B400088C3F /* RxNetServiceDelegateProxy.swift in Sources */,
 				F781C4AF219863B400088C3F /* NetServiceBrowser+Rx.swift in Sources */,
-				F781C4E0219864AB00088C3F /* ServiceTypesViewController.swift in Sources */,
+				F74441A821A0466900551552 /* ServiceTypesViewController.swift in Sources */,
 				F781C4AB219863B400088C3F /* ServiceTypesViewModel.swift in Sources */,
 				F781C4B3219863B400088C3F /* RxNetServiceBrowserDelegateProxy.swift in Sources */,
 				F781C4DA2198648A00088C3F /* WindowController.swift in Sources */,
-				F781C4DF219864AB00088C3F /* ServicesViewController.swift in Sources */,
-				F781C4DE219864AB00088C3F /* ServiceViewController.swift in Sources */,
+				F74441A721A0466900551552 /* ServicesViewController.swift in Sources */,
+				F74441A621A0466900551552 /* ServiceViewController.swift in Sources */,
 				F781C4B7219863B400088C3F /* ObservableType+FilterNils.swift in Sources */,
 				F781C4A9219863B400088C3F /* ServiceViewModel.swift in Sources */,
 				F781C45421972EEE00088C3F /* AppDelegate.swift in Sources */,
@@ -460,12 +459,13 @@
 				);
 				INFOPLIST_FILE = "Francis-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-macOS";
 				PRODUCT_NAME = Francis;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -483,10 +483,11 @@
 				);
 				INFOPLIST_FILE = "Francis-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-macOS";
 				PRODUCT_NAME = Francis;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -502,7 +503,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Francis-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -526,7 +527,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Francis-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-iOS";
