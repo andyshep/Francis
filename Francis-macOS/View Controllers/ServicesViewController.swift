@@ -15,13 +15,13 @@ class ServicesViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var statusLabel: NSButton!
     
-    private var viewModelBag = DisposeBag()
     private let bag = DisposeBag()
     
     lazy var servicesController: NSArrayController = {
         let controller = NSArrayController()
         controller.bind(.contentArray, to: self, withKeyPath: "services")
         controller.preservesSelection = true
+        controller.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         return controller
     }()
@@ -60,16 +60,15 @@ class ServicesViewController: NSViewController {
 
 private extension ServicesViewController {
     private func bind(to viewModel: ServicesViewModel) {
-        viewModelBag = DisposeBag()
-        
         viewModel.services
             .asDriver(onErrorJustReturn: [])
+            .distinctUntilChanged()
             .drive(onNext: { [weak self] (services) in
                 self?.willChangeValue(for: \.services)
                 self?.services = services
                 self?.didChangeValue(for: \.services)
             })
-            .disposed(by: viewModelBag)
+            .disposed(by: viewModel.bag)
     }
     
     private func handleError(_ error: Error) {

@@ -20,10 +20,12 @@ class ServiceTypesViewController: NSViewController {
     private let bag = DisposeBag()
     
     lazy var serviceTypesController: NSArrayController = {
-        let arrayController = NSArrayController()
-        arrayController.bind(.contentArray, to: self, withKeyPath: "serviceTypes")
+        let controller = NSArrayController()
+        controller.bind(.contentArray, to: self, withKeyPath: "serviceTypes")
+        controller.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        controller.preservesSelection = true
         
-        return arrayController
+        return controller
     }()
 
     override func viewDidLoad() {
@@ -46,6 +48,7 @@ class ServiceTypesViewController: NSViewController {
             .flatMapLatest { viewModel -> Observable<[NetService]> in
                 return viewModel.serviceTypes
             }
+            .distinctUntilChanged()
             .do(onNext: { [weak self] serviceTypes in
                 self?.willChangeValue(for: \.serviceTypes)
                 self?.serviceTypes = serviceTypes

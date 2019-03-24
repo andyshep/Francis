@@ -80,6 +80,7 @@ private extension NetService {
                 
                 return data.withUnsafeBytes { (address6Ptr: UnsafePointer<sockaddr_in6>) -> String? in
                     let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: Int(INET6_ADDRSTRLEN))
+                    defer { buffer.deallocate() }
                     var sin6AddressPtr = address6Ptr.pointee.sin6_addr
                     
                     guard
@@ -92,6 +93,6 @@ private extension NetService {
                     return address
                 }
             }
-        } .first
+        }.first
     }
 }

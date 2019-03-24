@@ -22,7 +22,7 @@ final class ServicesViewModel {
     }
     private let _services = BehaviorRelay<[NetService]>(value: [])
     
-    private let bag = DisposeBag()
+    public let bag = DisposeBag()
     private let browser = NetServiceBrowser()
     
     init(service: NetService) {

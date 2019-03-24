@@ -15,12 +15,12 @@ class ServiceViewController: NSViewController {
     
     @objc private var entries: [String: String] = [:]
     
-    private var viewModelBag = DisposeBag()
     private let bag = DisposeBag()
     
     lazy private var entriesController: NSDictionaryController = {
         let controller = NSDictionaryController()
         controller.bind(NSBindingName.contentDictionary, to: self, withKeyPath: "entries")
+        controller.preservesSelection = true
         
         return controller
     }()
@@ -63,15 +63,14 @@ class ServiceViewController: NSViewController {
     }
     
     private func bind(to viewModel: ServiceViewModel) {
-        viewModelBag = DisposeBag()
-        
         viewModel.entries
             .asDriver(onErrorJustReturn: [:])
+            .distinctUntilChanged()
             .drive(onNext: { [weak self] (entries) in
                 self?.willChangeValue(for: \.entries)
                 self?.entries = entries
                 self?.didChangeValue(for: \.entries)
             })
-            .disposed(by: viewModelBag)
+            .disposed(by: viewModel.bag)
     }
 }

@@ -27,7 +27,7 @@ public extension ObservableType where E: OptionalType {
     /// Filter nil values from the Observable stream
     ///
     /// - Returns: A filtered stream with nil values removed
-    public func filterNils() -> Observable<E.Wrapped> {
+    func filterNils() -> Observable<E.Wrapped> {
         return self.flatMap { element -> Observable<E.Wrapped> in
             guard let value = element.value else {
                 return Observable<E.Wrapped>.empty()

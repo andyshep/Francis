@@ -12,11 +12,14 @@ import RxSwift
 
 final class ServiceTypesViewModel {
     
+    /// To be triggered when the view model should be refreshed. The service
+    /// browser will stop and restart, and the list of services types will refresh.
     var refreshEvent: AnyObserver<Void> {
         return _refreshEvent.asObserver()
     }
     private let _refreshEvent = PublishSubject<Void>()
     
+    /// Emits with the list of service types for browsing.
     var serviceTypes: Observable<[NetService]> {
         return _services.asObservable()
     }
@@ -25,7 +28,7 @@ final class ServiceTypesViewModel {
     private var browser = NetServiceBrowser()
     private var browserBag = DisposeBag()
     
-    private var bag = DisposeBag()
+    public let bag = DisposeBag()
     
     init() {
         _refreshEvent
