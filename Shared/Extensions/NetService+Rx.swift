@@ -59,37 +59,44 @@ private extension NetService {
     /// The IPv4 address belonging to a service
     var addressIPv4: String? {
         return addresses?.compactMap { (data) -> String? in
-            return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in
+            data.withUnsafeBytes({ (ptr) -> String? in
                 guard
-                    addressPtr.pointee.sin_family == __uint8_t(AF_INET),
-                    let bytes = inet_ntoa(addressPtr.pointee.sin_addr),
+                    let sockaddr_in = ptr.bindMemory(to: sockaddr_in.self).baseAddress,
+                    sockaddr_in.pointee.sin_family == __uint8_t(AF_INET),
+                    let bytes = inet_ntoa(sockaddr_in.pointee.sin_addr),
                     let address = String(cString: bytes, encoding: .ascii)
                 else { return nil }
                 return address
-            }
+            })
         }.first
     }
 
     /// The IPv6 address belonging to a service
     var addressIPv6: String? {
         return addresses?.compactMap { (data) -> String? in
-            return data.withUnsafeBytes { (addressPtr: UnsafePointer<sockaddr_in>) -> String? in
+            return data.withUnsafeBytes { (ptr) -> String? in
                 guard
-                    addressPtr.pointee.sin_family == __uint8_t(AF_INET6)
+                    let addressPtr = ptr.bindMemory(to: sockaddr_in6.self).baseAddress,
+                    addressPtr.pointee.sin6_family == __uint8_t(AF_INET6)
                 else { return nil }
                 
-                return data.withUnsafeBytes { (address6Ptr: UnsafePointer<sockaddr_in6>) -> String? in
+                return data.withUnsafeBytes { (ptr) -> String? in
+                    guard
+                        let sockaddr_in6 = ptr.bindMemory(to: sockaddr_in6.self).baseAddress
+                        else { return nil }
+                    
+                    var sin6AddressPtr = sockaddr_in6.pointee.sin6_addr
+                    
                     let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: Int(INET6_ADDRSTRLEN))
                     defer { buffer.deallocate() }
-                    var sin6AddressPtr = address6Ptr.pointee.sin6_addr
                     
                     guard
-                        let bytes = inet_ntop(Int32(address6Ptr.pointee.sin6_family),
+                        let bytes = inet_ntop(Int32(sockaddr_in6.pointee.sin6_family),
                                               &sin6AddressPtr,
                                               buffer,
                                               __uint32_t(INET6_ADDRSTRLEN)),
                         let address = String(cString: bytes, encoding: .ascii)
-                    else { return nil }
+                        else { return nil }
                     return address
                 }
             }

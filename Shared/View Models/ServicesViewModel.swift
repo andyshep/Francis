@@ -31,7 +31,10 @@ final class ServicesViewModel {
             .map { service -> String in
                 let type = service.type
                 let range = type.range(of: ".")!
-                let index = type.index(type.startIndex, offsetBy: range.lowerBound.encodedOffset)
+                let index = type.index(
+                    type.startIndex,
+                    offsetBy: range.lowerBound.utf16Offset(in: type)
+                )
                 let prefix = type[..<index]
                 
                 return "\(service.name).\(String(prefix))"
