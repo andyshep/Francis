@@ -4,7 +4,7 @@ Francis is an app for discovering Bonjour services on the local network. It is b
 
 ## Requirements
 
-* Xcode 10.2 beta
+* Xcode 10.2
 * Swift 5
 * macOS 10.14 or iOS 12
 * Carthage
