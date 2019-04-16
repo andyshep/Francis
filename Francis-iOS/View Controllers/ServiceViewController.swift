@@ -26,9 +26,7 @@ class ServiceViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.title
-            .bind { [weak self] (title) in
-                self?.title = title
-            }
+            .bind(to: rx.title)
             .disposed(by: bag)
         
         viewModel.entries

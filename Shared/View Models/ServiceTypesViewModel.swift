@@ -59,6 +59,7 @@ final class ServiceTypesViewModel {
         browser.rx.searchForSearchTypes()
             .observeOn(MainScheduler.instance)
             .distinctUntilChanged()
+            .map { $0.sorted(by: { $0.name < $1.name }) }
             .bind(to: _services)
             .disposed(by: browserBag)
     }

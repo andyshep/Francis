@@ -22,10 +22,17 @@ final class ServicesViewModel {
     }
     private let _services = BehaviorRelay<[NetService]>(value: [])
     
+    var title: Observable<String> {
+        return _title.asObservable()
+    }
+    private let _title: BehaviorRelay<String>
+    
     public let bag = DisposeBag()
     private let browser = NetServiceBrowser()
     
     init(service: NetService) {
+        _title = BehaviorRelay<String>(value: service.name)
+        
         _refreshEvent
             .flatMapLatest { Observable.just(service) }
             .map { service -> String in
@@ -44,6 +51,9 @@ final class ServicesViewModel {
                 return this.browser.rx.searchForServices(type: query)
             }
             .distinctUntilChanged()
+            .map { (services) -> [NetService] in
+                return services.sorted(by: { return $0.name > $1.name })
+            }
             .bind(to: _services)
             .disposed(by: bag)
     }

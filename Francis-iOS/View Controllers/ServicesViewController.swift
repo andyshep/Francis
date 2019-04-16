@@ -24,11 +24,10 @@ class ServicesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = NSLocalizedString("Services", comment: "Services")
         
-        tableView.register(UITableViewCell.self,
-                           forCellReuseIdentifier: ReuseIdentifier.servicesCell)
+        viewModel.title
+            .bind(to: rx.title)
+            .disposed(by: bag)
         
         viewModel.services
             .bind(to: tableView.rx.items) { tableView, row, service in
@@ -40,6 +39,9 @@ class ServicesViewController: UIViewController {
                 return cell
             }
             .disposed(by: bag)
+        
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: ReuseIdentifier.servicesCell)
         
         tableView.rx.modelSelected(NetService.self)
             .map { (service) -> ServiceViewModel in
