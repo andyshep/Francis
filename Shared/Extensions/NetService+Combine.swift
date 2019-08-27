@@ -1,56 +1,86 @@
 //
-//  NetService+Rx.swift
+//  NetService+Combine.swift
 //  Francis
 //
-//  Created by Andrew Shepard on 10/27/18.
-//  Copyright © 2018 Andrew Shepard. All rights reserved.
+//  Created by Andrew Shepard on 8/26/19.
+//  Copyright © 2019 Andrew Shepard. All rights reserved.
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
+import Combine
 
-/// Reactive wrapper for `NetService`
-extension Reactive where Base: NetService {
+enum NetServicePublisherError: Error {
+    case cannotResolveService
+}
+
+final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceDelegate where SubscriberType.Input == NetService {
     
-    private enum NetServiceRxError: Error {
-        case signatureMismatch
+    private var subscriber: SubscriberType?
+    private let service: NetService
+    
+    init(subscriber: SubscriberType, service: NetService) {
+        self.subscriber = subscriber
+        self.service = service
+        
+        super.init()
+        
+        service.delegate = self
     }
     
-    /// Emits with the IPv4 address associated with a `NetService`
-    var addressIPv4: Observable<String?> {
-        return resolve().map { $0.addressIPv4 }.share()
+    func request(_ demand: Subscribers.Demand) {
+        service.stop()
+        service.resolve(withTimeout: 15.0)
     }
     
-    /// Emits with the IPv4 address associated with a `NetService`
-    var addressIPv6: Observable<String?> {
-        return resolve().map { $0.addressIPv6 }.share()
+    func cancel() {
+        subscriber = nil
     }
     
-    /// Resolve a service within a given `timeout`.
-    ///
-    /// - Parameter timeout: A duration to wait before the resolve times out.
-    /// - Returns: An `Observable` with the `NetService` after resolution.
-    func resolve(withTimeout timeout: TimeInterval = 15.0) -> Observable<NetService> {
-        let selector = #selector(
-            NetServiceDelegate
-                .netServiceDidResolveAddress(_:)
-            )
-        
-        let result = RxNetServiceDelegateProxy.proxy(for: base)
-            .methodInvoked(selector)
-            .map { params -> NetService in
-                guard let service = params[0] as? NetService else {
-                    throw NetServiceRxError.signatureMismatch
-                }
-                
-                return service
-            }
-        
-        base.stop()
-        base.resolve(withTimeout: timeout)
-        
-        return result
+    // MARK: <NetServiceDelegate>
+    
+    func netServiceDidResolveAddress(_ sender: NetService) {
+        _ = subscriber?.receive(service)
+    }
+    
+    func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
+        //
+    }
+}
+
+struct NetServicePublisher: Publisher {
+    typealias Output = NetService
+    typealias Failure = Error
+    
+    private let service: NetService
+    
+    init(service: NetService) {
+        self.service = service
+    }
+    
+    func receive<S>(subscriber: S) where S : Subscriber, NetServicePublisher.Failure == S.Failure, NetServicePublisher.Output == S.Input {
+        let subscription = NetServiceSubscription(
+            subscriber: subscriber,
+            service: service
+        )
+        subscriber.receive(subscription: subscription)
+    }
+}
+
+extension NetService {
+    func publisherForResolving() -> NetServicePublisher {
+        return NetServicePublisher(service: self)
+    }
+    
+    func ipv4AddressPublisher() -> AnyPublisher<String?, Error> {
+        return publisherForResolving()
+            .map { $0.addressIPv4 }
+            .eraseToAnyPublisher()
+    }
+    
+    func ipv6AddressPublisher() -> AnyPublisher<String?, Error> {
+        return publisherForResolving()
+            .map { $0.addressIPv6 }
+            .eraseToAnyPublisher()
     }
 }
 

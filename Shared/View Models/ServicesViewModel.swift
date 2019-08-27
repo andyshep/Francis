@@ -7,35 +7,38 @@
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
+import Combine
 
 final class ServicesViewModel {
     
-    var refreshEvent: AnyObserver<Void> {
-        return _refreshEvent.asObserver()
-    }
-    private let _refreshEvent = PublishSubject<Void>()
+    /// To be triggered when the view model should be refreshed. The service
+    /// browser will stop and restart, and the list of services types will refresh.
+//    var refreshEvent: AnySubscriber<Void, Never> {
+//        return AnySubscriber(_refreshEvent)
+//    }
+    let refreshEvent = PassthroughSubject<Void, Never>()
     
-    var services: Observable<[NetService]> {
-        return _services.asObservable()
+    /// Emits with the list of service types for browsing.
+    var services: AnyPublisher<[NetService], Never> {
+        return _services.eraseToAnyPublisher()
     }
-    private let _services = BehaviorRelay<[NetService]>(value: [])
+    private let _services = CurrentValueSubject<[NetService], Never>.init([])
     
-    var title: Observable<String> {
-        return _title.asObservable()
+    /// Emits with the title of the top level service.
+    var title: AnyPublisher<String, Never> {
+        return _title.eraseToAnyPublisher()
     }
-    private let _title: BehaviorRelay<String>
+    private let _title = CurrentValueSubject<String, Never>.init("")
     
-    public let bag = DisposeBag()
+    private var cancelables: [AnyCancellable] = []
     private let browser = NetServiceBrowser()
     
     init(service: NetService) {
-        _title = BehaviorRelay<String>(value: service.name)
+        _title.send(service.name)
         
-        _refreshEvent
-            .flatMapLatest { Observable.just(service) }
-            .map { service -> String in
+        refreshEvent
+            .flatMap { Just(service).eraseToAnyPublisher() }
+            .map { (service) -> String in
                 let type = service.type
                 let range = type.range(of: ".")!
                 let index = type.index(
@@ -43,22 +46,30 @@ final class ServicesViewModel {
                     offsetBy: range.lowerBound.utf16Offset(in: type)
                 )
                 let prefix = type[..<index]
-                
+
                 return "\(service.name).\(String(prefix))"
             }
-            .flatMapLatest { [weak self] (query) -> Observable<[NetService]> in
-                guard let this = self else { return Observable.never() }
-                return this.browser.rx.searchForServices(type: query)
+            .flatMap { query -> NetServiceBrowserPublisher in
+                return self.browser.publisherForServices(type: query)
             }
-            .distinctUntilChanged()
-            .map { (services) -> [NetService] in
-                return services.sorted(by: { return $0.name > $1.name })
+            .sink { [weak self] (result) in
+                guard let this = self else { return }
+                
+                switch result {
+                case .success(let services):
+                    var contents = this._services.value
+                    contents.append(contentsOf: services)
+                    let sorted = contents.sorted(by: { return $0.name > $1.name })
+                    this._services.send(sorted)
+                case .failure(let error):
+                    print("unhandled error: \(error)")
+                }
             }
-            .bind(to: _services)
-            .disposed(by: bag)
+            .store(in: &cancelables)
     }
 
     deinit {
         browser.stop()
+        cancelables.forEach { $0.cancel() }
     }
 }

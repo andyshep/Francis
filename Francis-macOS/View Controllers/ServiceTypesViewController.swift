@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-import RxSwift
-import RxCocoa
+import Combine
 
 class ServiceTypesViewController: NSViewController {
     
@@ -17,7 +16,8 @@ class ServiceTypesViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     
     private var viewModel: ServiceTypesViewModel!
-    private let bag = DisposeBag()
+    
+    private var cancelables: [AnyCancellable] = []
     
     lazy var serviceTypesController: NSArrayController = {
         let controller = NSArrayController()
@@ -27,6 +27,10 @@ class ServiceTypesViewController: NSViewController {
         
         return controller
     }()
+    
+    deinit {
+        cancelables.forEach { $0.cancel() }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,27 +38,16 @@ class ServiceTypesViewController: NSViewController {
         tableView.bind(.content, to: serviceTypesController, withKeyPath: "arrangedObjects")
         tableView.bind(.selectionIndexes, to: serviceTypesController, withKeyPath: "selectionIndexes")
         
-        self.rx.observe(Any.self, "representedObject")
-            .do(onNext: { [weak self] (representedObject) in
-                guard representedObject == nil else { return }
-                
-                self?.willChangeValue(for: \.serviceTypes)
-                self?.serviceTypes = []
-                self?.didChangeValue(for: \.serviceTypes)
-            })
-            .map { $0 as? ServiceTypesViewModel }
-            .catchErrorJustReturn(nil)
-            .filterNils()
-            .flatMapLatest { viewModel -> Observable<[NetService]> in
+        representedObjectPublisher
+            .compactMap { $0 as? ServiceTypesViewModel }
+            .flatMap { viewModel -> AnyPublisher<[NetService], Never> in
                 return viewModel.serviceTypes
             }
-            .distinctUntilChanged()
-            .do(onNext: { [weak self] serviceTypes in
+            .sink { [weak self] serviceTypes in
                 self?.willChangeValue(for: \.serviceTypes)
                 self?.serviceTypes = serviceTypes
                 self?.didChangeValue(for: \.serviceTypes)
-            })
-            .subscribe()
-            .disposed(by: bag)
+            }
+            .store(in: &cancelables)
     }
 }

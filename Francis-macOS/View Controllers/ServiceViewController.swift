@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import RxSwift
+import Combine
 
 class ServiceViewController: NSViewController {
     
@@ -15,7 +15,7 @@ class ServiceViewController: NSViewController {
     
     @objc private var entries: [String: String] = [:]
     
-    private let bag = DisposeBag()
+    private var cancelables: [AnyCancellable] = []
     
     lazy private var entriesController: NSDictionaryController = {
         let controller = NSDictionaryController()
@@ -31,25 +31,18 @@ class ServiceViewController: NSViewController {
         tableView.bind(.content, to: entriesController, withKeyPath: "arrangedObjects")
         tableView.bind(.selectionIndexes, to: entriesController, withKeyPath: "selectionIndexes")
         
-        self.rx.observe(Any.self, "representedObject")
-            .do(onNext: { [weak self] (representedObject) in
-                guard representedObject == nil else { return }
-
-                self?.willChangeValue(for: \.entries)
-                self?.entries = [:]
-                self?.didChangeValue(for: \.entries)
-            })
-            .map { something in
-                return something as? ServiceViewModel
+        representedObjectPublisher
+            .sink { [weak self] (representedObject) in
+                if representedObject == nil {
+                    self?.willChangeValue(for: \.entries)
+                    self?.entries = [:]
+                    self?.didChangeValue(for: \.entries)
+                } else if let viewModel = representedObject as? ServiceViewModel {
+                    self?.bind(to: viewModel)
+                    viewModel.refreshEvent.send(())
+                }
             }
-            .catchErrorJustReturn(nil)
-            .filterNils()
-            .do(onNext: { [weak self] viewModel in
-                self?.bind(to: viewModel)
-                viewModel.refreshEvent.onNext(())
-            })
-            .subscribe()
-            .disposed(by: bag)
+            .store(in: &cancelables)
     }
     
     @IBAction func copyObj(_ sender: Any) {
@@ -64,13 +57,12 @@ class ServiceViewController: NSViewController {
     
     private func bind(to viewModel: ServiceViewModel) {
         viewModel.entries
-            .asDriver(onErrorJustReturn: [:])
-            .distinctUntilChanged()
-            .drive(onNext: { [weak self] (entries) in
+            .removeDuplicates()
+            .sink { [weak self] (entries) in
                 self?.willChangeValue(for: \.entries)
                 self?.entries = entries
                 self?.didChangeValue(for: \.entries)
-            })
-            .disposed(by: viewModel.bag)
+            }
+            .store(in: &cancelables)
     }
 }

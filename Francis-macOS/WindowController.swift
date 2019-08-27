@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-import RxSwift
-import RxCocoa
+import Combine
 
 class WindowController: NSWindowController {
     
@@ -48,7 +47,7 @@ class WindowController: NSWindowController {
         return arrayController
     }()
     
-    private var bag = DisposeBag()
+    private var cancelables: [AnyCancellable] = []
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -70,31 +69,30 @@ extension WindowController {
         
         // observe service type selections
         // e.g. a service type containing one or more services
+        
         serviceTypesController
-            .rx
-            .observeWeakly(Int.self, "selectionIndex", options: [.new])
-            .map { [weak self] (index) -> ServicesViewModel? in
+            .selectionIndexPublisher
+            .map { [weak self] _ -> ServicesViewModel? in
                 guard let this = self else { return nil }
-                guard let service = this.serviceTypesController.selectedObjects.first as? NetService else { return nil }
+                guard let service = this.serviceTypesController.selectedObjects.first as? NetService else {
+                    return nil
+                }
 
                 let viewModel = ServicesViewModel(service: service)
                 return viewModel
             }
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] (viewModel) in
-                guard let this = self else { return }
-
-                this.servicesViewController.representedObject = viewModel
-                this.serviceViewController.representedObject = nil
-            })
-            .disposed(by: bag)
+            .sink { [weak self] viewModel in
+                self?.servicesViewController.representedObject = viewModel
+                self?.serviceViewController.representedObject = nil
+            }
+            .store(in: &cancelables)
         
         // observe individual service selections
         // e.g. a service running on a device
+        
         servicesController
-            .rx
-            .observeWeakly(Int.self, "selectionIndex", options: [.new])
-            .map { [weak self] (index) -> ServiceViewModel? in
+            .selectionIndexPublisher
+            .map { [weak self] _ -> ServiceViewModel? in
                 guard let this = self else { return nil }
                 
                 guard let service = this.servicesController.selectedObjects.first as? NetService else {
@@ -104,21 +102,18 @@ extension WindowController {
                 let viewModel = ServiceViewModel(service: service)
                 return viewModel
             }
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] (viewModel) in
-                guard let this = self else { return }
-                
-                this.serviceViewController.representedObject = viewModel
-            })
-            .disposed(by: bag)
+            .sink { [weak self] viewModel in
+                self?.serviceViewController.representedObject = viewModel
+            }
+            .store(in: &cancelables)
     }
     
     private func bindToButtons() {
-        reloadButton
-            .rx
-            .controlEvent
-            .debounce(0.5, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.refreshEvent)
-            .disposed(by: bag)
+//        reloadButton
+//            .rx
+//            .controlEvent
+//            .debounce(DispatchTimeInterval.milliseconds(Int(0.5)), scheduler: MainScheduler.instance)
+//            .bind(to: viewModel.refreshEvent)
+//            .disposed(by: bag)
     }
 }

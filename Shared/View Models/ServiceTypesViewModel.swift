@@ -7,60 +7,65 @@
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
+import Combine
 
 final class ServiceTypesViewModel {
     
     /// To be triggered when the view model should be refreshed. The service
     /// browser will stop and restart, and the list of services types will refresh.
-    var refreshEvent: AnyObserver<Void> {
-        return _refreshEvent.asObserver()
-    }
-    private let _refreshEvent = PublishSubject<Void>()
+    let refreshEvent = PassthroughSubject<Void, Never>()
     
     /// Emits with the list of service types for browsing.
-    var serviceTypes: Observable<[NetService]> {
-        return _services.asObservable()
+    var serviceTypes: AnyPublisher<[NetService], Never> {
+        return _services.eraseToAnyPublisher()
     }
-    private let _services = BehaviorRelay<[NetService]>(value: [])
+    private let _services = CurrentValueSubject<[NetService], Never>.init([])
     
     private var browser = NetServiceBrowser()
-    private var browserBag = DisposeBag()
+    private var browserSubscription: AnyCancellable?
     
-    public let bag = DisposeBag()
+    private var cancelables: [AnyCancellable] = []
     
     init() {
-        _refreshEvent
-            .asObservable()
-            .subscribe(onNext: { [weak self] in
+        refreshEvent
+            .sink { [weak self] _ in
                 self?.stopAndRefreshBrowsing()
-            })
-            .disposed(by: bag)
+            }
+            .store(in: &cancelables)
         
         bind(to: browser)
     }
     
     deinit {
         browser.stop()
+        cancelables.forEach { $0.cancel() }
     }
     
     private func stopAndRefreshBrowsing() {
         browser.stop()
-        browserBag = DisposeBag()
+        browserSubscription?.cancel()
         
         browser = NetServiceBrowser()
-        _services.accept([])
+        _services.send([])
         
         bind(to: browser)
     }
     
     private func bind(to browser: NetServiceBrowser) {
-        browser.rx.searchForSearchTypes()
-            .observeOn(MainScheduler.instance)
-            .distinctUntilChanged()
-            .map { $0.sorted(by: { $0.name < $1.name }) }
-            .bind(to: _services)
-            .disposed(by: browserBag)
+        browserSubscription = browser
+            .publisherForSearchTypes()
+            .sink { [weak self] (result) in
+                guard let this = self else { return }
+                
+                switch result {
+                case .success(let services):
+                    var contents = this._services.value
+                    contents.append(contentsOf: services)
+                    let ordered = contents.sorted(by: { $0.name < $1.name })
+                    this._services.send(ordered)
+                case .failure(let error):
+                    print("unhandled error: \(error)")
+                }
+            }
     }
 }
