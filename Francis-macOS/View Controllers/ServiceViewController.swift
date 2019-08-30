@@ -37,7 +37,7 @@ class ServiceViewController: NSViewController {
                     self?.willChangeValue(for: \.entries)
                     self?.entries = [:]
                     self?.didChangeValue(for: \.entries)
-                } else if let viewModel = representedObject as? ServiceViewModel {
+                } else if let viewModel = representedObject as? ServiceProvider {
                     self?.bind(to: viewModel)
                     viewModel.refreshEvent.send(())
                 }
@@ -55,7 +55,7 @@ class ServiceViewController: NSViewController {
         pasteboard.setString(value, forType: .string)
     }
     
-    private func bind(to viewModel: ServiceViewModel) {
+    private func bind(to viewModel: ServiceProvider) {
         viewModel.entries
             .removeDuplicates()
             .sink { [weak self] (entries) in

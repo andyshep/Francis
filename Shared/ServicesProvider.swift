@@ -1,5 +1,5 @@
 //
-//  ServicesViewModel.swift
+//  ServicesProvider.swift
 //  Francis
 //
 //  Created by Andrew Shepard on 4/8/18.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class ServicesViewModel {
+final class ServicesProvider {
     
     /// To be triggered when the view model should be refreshed. The service
     /// browser will stop and restart, and the list of services types will refresh.

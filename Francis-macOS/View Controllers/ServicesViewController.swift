@@ -39,7 +39,7 @@ class ServicesViewController: NSViewController {
                     self?.willChangeValue(for: \.services)
                     self?.services = []
                     self?.didChangeValue(for: \.services)
-                } else if let viewModel = representedObject as? ServicesViewModel {
+                } else if let viewModel = representedObject as? ServicesProvider {
                     self?.bind(to: viewModel)
                     viewModel.refreshEvent.send(())
                 }
@@ -49,7 +49,7 @@ class ServicesViewController: NSViewController {
 }
 
 private extension ServicesViewController {
-    private func bind(to viewModel: ServicesViewModel) {
+    private func bind(to viewModel: ServicesProvider) {
         viewModel.services
             .removeDuplicates()
             .sink { [weak self] (services) in

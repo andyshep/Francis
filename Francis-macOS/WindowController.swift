@@ -15,7 +15,7 @@ class WindowController: NSWindowController {
     @IBOutlet private weak var servicesListButton: NSPopUpButton!
     @IBOutlet private weak var reloadButton: NSButton!
     
-    private let viewModel = ServiceTypesViewModel()
+    private let viewModel = ServiceTypesProvider()
     
     lazy private var serviceTypesViewController: ServiceTypesViewController = {
         guard let splitViewController = contentViewController as? NSSplitViewController else { fatalError() }
@@ -72,13 +72,13 @@ extension WindowController {
         
         serviceTypesController
             .selectionIndexPublisher
-            .map { [weak self] _ -> ServicesViewModel? in
+            .map { [weak self] _ -> ServicesProvider? in
                 guard let this = self else { return nil }
                 guard let service = this.serviceTypesController.selectedObjects.first as? NetService else {
                     return nil
                 }
 
-                let viewModel = ServicesViewModel(service: service)
+                let viewModel = ServicesProvider(service: service)
                 return viewModel
             }
             .sink { [weak self] viewModel in
@@ -92,14 +92,14 @@ extension WindowController {
         
         servicesController
             .selectionIndexPublisher
-            .map { [weak self] _ -> ServiceViewModel? in
+            .map { [weak self] _ -> ServiceProvider? in
                 guard let this = self else { return nil }
                 
                 guard let service = this.servicesController.selectedObjects.first as? NetService else {
                     return nil
                 }
                 
-                let viewModel = ServiceViewModel(service: service)
+                let viewModel = ServiceProvider(service: service)
                 return viewModel
             }
             .sink { [weak self] viewModel in

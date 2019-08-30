@@ -15,7 +15,7 @@ class ServiceTypesViewController: NSViewController {
     
     @IBOutlet private weak var tableView: NSTableView!
     
-    private var viewModel: ServiceTypesViewModel!
+    private var viewModel: ServiceTypesProvider!
     
     private var cancelables: [AnyCancellable] = []
     
@@ -39,7 +39,7 @@ class ServiceTypesViewController: NSViewController {
         tableView.bind(.selectionIndexes, to: serviceTypesController, withKeyPath: "selectionIndexes")
         
         representedObjectPublisher
-            .compactMap { $0 as? ServiceTypesViewModel }
+            .compactMap { $0 as? ServiceTypesProvider }
             .flatMap { viewModel -> AnyPublisher<[NetService], Never> in
                 return viewModel.serviceTypes
             }

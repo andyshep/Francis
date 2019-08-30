@@ -133,3 +133,7 @@ private extension NetService {
         }.first
     }
 }
+
+// MARK: <Identifiable>
+
+extension NetService: Identifiable { }
