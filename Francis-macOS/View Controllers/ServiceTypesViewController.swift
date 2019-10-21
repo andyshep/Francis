@@ -40,7 +40,7 @@ class ServiceTypesViewController: NSViewController {
         
         representedObjectPublisher
             .compactMap { $0 as? ServiceTypesProvider }
-            .flatMap { viewModel -> AnyPublisher<[NetService], Never> in
+            .flatMapLatest { viewModel -> AnyPublisher<[NetService], Never> in
                 return viewModel.serviceTypes
             }
             .sink { [weak self] serviceTypes in

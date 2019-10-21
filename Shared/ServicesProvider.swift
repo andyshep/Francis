@@ -18,7 +18,7 @@ final class ServicesProvider {
 //    }
     let refreshEvent = PassthroughSubject<Void, Never>()
     
-    /// Emits with the list of service types for browsing.
+    /// Emits with the list of services for browsing.
     var services: AnyPublisher<[NetService], Never> {
         return _services.eraseToAnyPublisher()
     }
@@ -37,10 +37,10 @@ final class ServicesProvider {
         _title.send(service.name)
         
         refreshEvent
-            .flatMap { Just(service).eraseToAnyPublisher() }
-            .map { (service) -> String in
+            .map { _ -> String in
                 let type = service.type
-                let range = type.range(of: ".")!
+                guard let range = type.range(of: ".") else { return "" }
+                
                 let index = type.index(
                     type.startIndex,
                     offsetBy: range.lowerBound.utf16Offset(in: type)
@@ -49,7 +49,7 @@ final class ServicesProvider {
 
                 return "\(service.name).\(String(prefix))"
             }
-            .flatMap { query -> NetServiceBrowserPublisher in
+            .flatMap { [unowned self] query -> NetServiceBrowserPublisher in
                 return self.browser.publisherForServices(type: query)
             }
             .sink { [weak self] (result) in
