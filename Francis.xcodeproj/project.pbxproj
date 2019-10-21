@@ -22,6 +22,7 @@
 		F781C4AB219863B400088C3F /* ServiceTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A1219863B400088C3F /* ServiceTypesProvider.swift */; };
 		F781C4AD219863B400088C3F /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A2219863B400088C3F /* ServicesProvider.swift */; };
 		F781C4DA2198648A00088C3F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4D92198648A00088C3F /* WindowController.swift */; };
+		F7E6CABA235BE3A0005981A7 /* NSButton+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */; };
 		F7F6908A23173A1D00D15AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908923173A1D00D15AFF /* AppDelegate.swift */; };
 		F7F6908C23173A1D00D15AFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908B23173A1D00D15AFF /* SceneDelegate.swift */; };
 		F7F6908E23173A1D00D15AFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908D23173A1D00D15AFF /* ContentView.swift */; };
@@ -63,6 +64,7 @@
 		F781C4CF2198645C00088C3F /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/Mac/RxCocoa.framework.dSYM; sourceTree = "<group>"; };
 		F781C4D02198645C00088C3F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		F781C4D92198648A00088C3F /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Combine.swift"; sourceTree = "<group>"; };
 		F7F6908723173A1D00D15AFF /* Francis-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Francis-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F6908923173A1D00D15AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7F6908B23173A1D00D15AFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				F75E78F62314A52A00ABE7B8 /* NSArrayController+Combine.swift */,
 				F75E78F92314B0E700ABE7B8 /* Publisher+Combine.swift */,
 				F75E78FC2314B4A600ABE7B8 /* NSViewController+Combine.swift */,
+				F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				F781C4DA2198648A00088C3F /* WindowController.swift in Sources */,
 				F75FBA1E22C6453900790509 /* NetServiceBrowser+Combine.swift in Sources */,
 				F74441A721A0466900551552 /* ServicesViewController.swift in Sources */,
+				F7E6CABA235BE3A0005981A7 /* NSButton+Combine.swift in Sources */,
 				F74441A621A0466900551552 /* ServiceViewController.swift in Sources */,
 				F75E78F32313EC7100ABE7B8 /* NetService+Combine.swift in Sources */,
 				F75E78FA2314B0E700ABE7B8 /* Publisher+Combine.swift in Sources */,
@@ -468,13 +472,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -522,11 +527,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

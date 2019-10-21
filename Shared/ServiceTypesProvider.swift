@@ -13,7 +13,10 @@ final class ServiceTypesProvider {
     
     /// To be triggered when the view model should be refreshed. The service
     /// browser will stop and restart, and the list of services types will refresh.
-    let refreshEvent = PassthroughSubject<Void, Never>()
+    var refreshEvent: AnySubscriber<Void, Never> {
+        return AnySubscriber(_refreshEvent)
+    }
+    private let _refreshEvent = PassthroughSubject<Void, Never>()
     
     /// Emits with the list of service types for browsing.
     var serviceTypes: AnyPublisher<[NetService], Never> {
@@ -27,7 +30,7 @@ final class ServiceTypesProvider {
     private var cancelables: [AnyCancellable] = []
     
     init() {
-        refreshEvent
+        _refreshEvent
             .sink { [weak self] _ in
                 self?.stopAndRefreshBrowsing()
             }

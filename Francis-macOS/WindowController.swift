@@ -109,11 +109,8 @@ extension WindowController {
     }
     
     private func bindToButtons() {
-//        reloadButton
-//            .rx
-//            .controlEvent
-//            .debounce(DispatchTimeInterval.milliseconds(Int(0.5)), scheduler: MainScheduler.instance)
-//            .bind(to: viewModel.refreshEvent)
-//            .disposed(by: bag)
+        reloadButton.publisher
+            .debounce(for: .milliseconds(Int(0.5)), scheduler: DispatchQueue.main)
+            .receive(subscriber: viewModel.refreshEvent)
     }
 }
