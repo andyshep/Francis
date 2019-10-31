@@ -64,11 +64,20 @@ final class ServiceTypesProvider {
                 case .success(let services):
                     var contents = this._services.value
                     contents.append(contentsOf: services)
-                    let ordered = contents.sorted(by: { $0.name < $1.name })
+                    
+                    let ordered = contents.unique
+                        .sorted(by: { $0.name < $1.name })
+                    
                     this._services.send(ordered)
                 case .failure(let error):
                     print("unhandled error: \(error)")
                 }
             }
+    }
+}
+
+private extension Array where Element: Hashable {
+    var unique: [Element] {
+        return Array(Set(self))
     }
 }

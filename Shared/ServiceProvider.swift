@@ -14,9 +14,6 @@ final class ServiceProvider {
     /// To be triggered when the view model should be refreshed. A new
     /// text record will be fetched from the service and emit through the
     /// `entries` observable.
-//    var refreshEvent: AnySubscriber<Void, Never> {
-//        return AnySubscriber(_refreshEvent)
-//    }
     let refreshEvent = PassthroughSubject<Void, Never>()
     
     /// Emits whenever the service attributes change.
@@ -31,29 +28,6 @@ final class ServiceProvider {
     }
     private let _title = CurrentValueSubject<String, Never>("")
     
-    private var addresses: AnyPublisher<[String: String], Error> {
-//        return Publishers.CombineLatest(
-//            service.ipv4AddressPublisher(),
-//            service.ipv6AddressPublisher()
-//        )
-        return Just(())
-        .mapError { _ -> Error in }
-        .map { _ -> [String: String] in
-//            var result: [String: String] = [:]
-//
-//            if let addressIPv4 = addressIPv4 {
-//                result["IPv4"] = addressIPv4
-//            }
-//            if let addressIPv6 = addressIPv6 {
-//                result["IPv6"] = addressIPv6
-//            }
-//
-//            return result
-            return [:]
-        }
-        .eraseToAnyPublisher()
-    }
-    
     private let service: NetService
     private var cancelables: [AnyCancellable] = []
     
@@ -62,9 +36,23 @@ final class ServiceProvider {
         
         _title.send(service.name)
         
+        let servicePublisher = service.publisherForResolving()
+            .share()
+
+        let addressesPublisher = servicePublisher
+            .map { service -> [String: String] in
+                var result: [String: String] = [:]
+                result["IPv4"] = service.addressIPv4
+                result["IPv6"] = service.addressIPv6
+
+                return result
+            }
+            .share()
+            .eraseToAnyPublisher()
+        
         refreshEvent
             .mapError { _ -> Error in }
-            .flatMap { _ in Publishers.CombineLatest(service.publisherForResolving(), self.addresses) }
+            .flatMapLatest {  _ in Publishers.CombineLatest(servicePublisher, addressesPublisher) }
             .map { (resolved, addresses) -> ((NetService, [String: Data]), [String: String]) in
                 guard let data = service.txtRecordData() else { return ((resolved, [:]), addresses) }
                 return ((service, NetService.dictionary(fromTXTRecord: data)), addresses)

@@ -67,24 +67,10 @@ struct NetServicePublisher: Publisher {
 }
 
 extension NetService {
+    
     func publisherForResolving() -> NetServicePublisher {
         return NetServicePublisher(service: self)
     }
-    
-    func ipv4AddressPublisher() -> AnyPublisher<String?, Error> {
-        return publisherForResolving()
-            .map { $0.addressIPv4 }
-            .eraseToAnyPublisher()
-    }
-    
-    func ipv6AddressPublisher() -> AnyPublisher<String?, Error> {
-        return publisherForResolving()
-            .map { $0.addressIPv6 }
-            .eraseToAnyPublisher()
-    }
-}
-
-private extension NetService {
     
     /// The IPv4 address belonging to a service
     var addressIPv4: String? {

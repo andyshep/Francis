@@ -13,9 +13,6 @@ final class ServicesProvider {
     
     /// To be triggered when the view model should be refreshed. The service
     /// browser will stop and restart, and the list of services types will refresh.
-//    var refreshEvent: AnySubscriber<Void, Never> {
-//        return AnySubscriber(_refreshEvent)
-//    }
     let refreshEvent = PassthroughSubject<Void, Never>()
     
     /// Emits with the list of services for browsing.
