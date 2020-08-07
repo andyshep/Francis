@@ -3,89 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F74441A621A0466900551552 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A321A0466900551552 /* ServiceViewController.swift */; };
-		F74441A721A0466900551552 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A421A0466900551552 /* ServicesViewController.swift */; };
-		F74441A821A0466900551552 /* ServiceTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74441A521A0466900551552 /* ServiceTypesViewController.swift */; };
-		F75E78F32313EC7100ABE7B8 /* NetService+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78F22313EC7100ABE7B8 /* NetService+Combine.swift */; };
-		F75E78F72314A52A00ABE7B8 /* NSArrayController+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78F62314A52A00ABE7B8 /* NSArrayController+Combine.swift */; };
-		F75E78FA2314B0E700ABE7B8 /* Publisher+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78F92314B0E700ABE7B8 /* Publisher+Combine.swift */; };
-		F75E78FD2314B4A600ABE7B8 /* NSViewController+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78FC2314B4A600ABE7B8 /* NSViewController+Combine.swift */; };
-		F75FBA1E22C6453900790509 /* NetServiceBrowser+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FBA1D22C6453900790509 /* NetServiceBrowser+Combine.swift */; };
-		F781C40B21972D7400088C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F781C40A21972D7400088C3F /* Assets.xcassets */; };
-		F781C40E21972D7400088C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F781C40C21972D7400088C3F /* Main.storyboard */; };
-		F781C45421972EEE00088C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C45321972EEE00088C3F /* AppDelegate.swift */; };
-		F781C4A9219863B400088C3F /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A0219863B400088C3F /* ServiceProvider.swift */; };
-		F781C4AB219863B400088C3F /* ServiceTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A1219863B400088C3F /* ServiceTypesProvider.swift */; };
-		F781C4AD219863B400088C3F /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A2219863B400088C3F /* ServicesProvider.swift */; };
-		F781C4DA2198648A00088C3F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4D92198648A00088C3F /* WindowController.swift */; };
-		F7E6CABA235BE3A0005981A7 /* NSButton+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */; };
-		F7F6908A23173A1D00D15AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908923173A1D00D15AFF /* AppDelegate.swift */; };
-		F7F6908C23173A1D00D15AFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908B23173A1D00D15AFF /* SceneDelegate.swift */; };
-		F7F6908E23173A1D00D15AFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6908D23173A1D00D15AFF /* ContentView.swift */; };
-		F7F6909023173A1F00D15AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7F6908F23173A1F00D15AFF /* Assets.xcassets */; };
-		F7F6909323173A1F00D15AFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7F6909223173A1F00D15AFF /* Preview Assets.xcassets */; };
-		F7F6909623173A1F00D15AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F6909423173A1F00D15AFF /* LaunchScreen.storyboard */; };
-		F7FCB814231753310026C44D /* ServiceTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FCB813231753310026C44D /* ServiceTypesViewModel.swift */; };
-		F7FCB815231753740026C44D /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A0219863B400088C3F /* ServiceProvider.swift */; };
-		F7FCB816231753740026C44D /* ServiceTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A1219863B400088C3F /* ServiceTypesProvider.swift */; };
-		F7FCB817231753740026C44D /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781C4A2219863B400088C3F /* ServicesProvider.swift */; };
-		F7FCB818231753800026C44D /* NetServiceBrowser+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FBA1D22C6453900790509 /* NetServiceBrowser+Combine.swift */; };
-		F7FCB819231753800026C44D /* NetService+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78F22313EC7100ABE7B8 /* NetService+Combine.swift */; };
-		F7FCB81B231753800026C44D /* Publisher+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E78F92314B0E700ABE7B8 /* Publisher+Combine.swift */; };
+		F772B33924DCCB5900FE136C /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772B33724DCCB5600FE136C /* FrancisApp.swift */; };
+		F772B33B24DCCB8300FE136C /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772B33A24DCCB8300FE136C /* FrancisApp.swift */; };
+		F7EA282024D733CC00A28C63 /* ServiceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceViews.swift */; };
+		F7EA282124D733CC00A28C63 /* ServiceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceViews.swift */; };
+		F7EA282224D733CC00A28C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EA280D24D733CC00A28C63 /* Assets.xcassets */; };
+		F7EA282324D733CC00A28C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EA280D24D733CC00A28C63 /* Assets.xcassets */; };
+		F7EA283D24D735E300A28C63 /* Publisher+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283324D735E300A28C63 /* Publisher+Combine.swift */; };
+		F7EA283E24D735E300A28C63 /* Publisher+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283324D735E300A28C63 /* Publisher+Combine.swift */; };
+		F7EA284524D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283724D735E300A28C63 /* NetServiceBrowser+Combine.swift */; };
+		F7EA284624D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283724D735E300A28C63 /* NetServiceBrowser+Combine.swift */; };
+		F7EA284724D735E300A28C63 /* NetService+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283824D735E300A28C63 /* NetService+Combine.swift */; };
+		F7EA284824D735E300A28C63 /* NetService+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283824D735E300A28C63 /* NetService+Combine.swift */; };
+		F7EA284924D735E300A28C63 /* ServiceViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283924D735E300A28C63 /* ServiceViewModels.swift */; };
+		F7EA284A24D735E300A28C63 /* ServiceViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283924D735E300A28C63 /* ServiceViewModels.swift */; };
+		F7EA284B24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283A24D735E300A28C63 /* ServiceTypesProvider.swift */; };
+		F7EA284C24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283A24D735E300A28C63 /* ServiceTypesProvider.swift */; };
+		F7EA284D24D735E300A28C63 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283B24D735E300A28C63 /* ServicesProvider.swift */; };
+		F7EA284E24D735E300A28C63 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283B24D735E300A28C63 /* ServicesProvider.swift */; };
+		F7EA284F24D735E300A28C63 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283C24D735E300A28C63 /* ServiceProvider.swift */; };
+		F7EA285024D735E300A28C63 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283C24D735E300A28C63 /* ServiceProvider.swift */; };
+		F7EA285224D96AC500A28C63 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA285124D96AC500A28C63 /* Sidebar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F74441A321A0466900551552 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
-		F74441A421A0466900551552 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
-		F74441A521A0466900551552 /* ServiceTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypesViewController.swift; sourceTree = "<group>"; };
-		F75E78F22313EC7100ABE7B8 /* NetService+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetService+Combine.swift"; sourceTree = "<group>"; };
-		F75E78F62314A52A00ABE7B8 /* NSArrayController+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSArrayController+Combine.swift"; sourceTree = "<group>"; };
-		F75E78F92314B0E700ABE7B8 /* Publisher+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Combine.swift"; sourceTree = "<group>"; };
-		F75E78FC2314B4A600ABE7B8 /* NSViewController+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Combine.swift"; sourceTree = "<group>"; };
-		F75FBA1D22C6453900790509 /* NetServiceBrowser+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetServiceBrowser+Combine.swift"; sourceTree = "<group>"; };
-		F781C40421972D7200088C3F /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F781C40A21972D7400088C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F781C40D21972D7400088C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F781C40F21972D7400088C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F781C45321972EEE00088C3F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F781C4A0219863B400088C3F /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
-		F781C4A1219863B400088C3F /* ServiceTypesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypesProvider.swift; sourceTree = "<group>"; };
-		F781C4A2219863B400088C3F /* ServicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
-		F781C4BB2198641B00088C3F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = SOURCE_ROOT; };
-		F781C4BC2198641B00088C3F /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/iOS/RxCocoa.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		F781C4BD2198641B00088C3F /* RxSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxSwift.framework.dSYM; path = Carthage/Build/iOS/RxSwift.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		F781C4BE2198641B00088C3F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = SOURCE_ROOT; };
-		F781C4CD2198645C00088C3F /* RxSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxSwift.framework.dSYM; path = Carthage/Build/Mac/RxSwift.framework.dSYM; sourceTree = "<group>"; };
-		F781C4CE2198645C00088C3F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
-		F781C4CF2198645C00088C3F /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/Mac/RxCocoa.framework.dSYM; sourceTree = "<group>"; };
-		F781C4D02198645C00088C3F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
-		F781C4D92198648A00088C3F /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Combine.swift"; sourceTree = "<group>"; };
-		F7F6908723173A1D00D15AFF /* Francis-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Francis-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7F6908923173A1D00D15AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F7F6908B23173A1D00D15AFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F7F6908D23173A1D00D15AFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F7F6908F23173A1F00D15AFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F7F6909223173A1F00D15AFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F7F6909523173A1F00D15AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F7F6909723173A1F00D15AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7F6909B23173A2900D15AFF /* Francis-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Francis-SwiftUI.entitlements"; sourceTree = "<group>"; };
-		F7FCB813231753310026C44D /* ServiceTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypesViewModel.swift; sourceTree = "<group>"; };
+		F772B33724DCCB5600FE136C /* FrancisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrancisApp.swift; sourceTree = "<group>"; };
+		F772B33A24DCCB8300FE136C /* FrancisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrancisApp.swift; sourceTree = "<group>"; };
+		F7EA280C24D733CB00A28C63 /* ServiceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViews.swift; sourceTree = "<group>"; };
+		F7EA280D24D733CC00A28C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7EA281224D733CC00A28C63 /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EA281524D733CC00A28C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EA281A24D733CC00A28C63 /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EA281C24D733CC00A28C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EA281D24D733CC00A28C63 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		F7EA283324D735E300A28C63 /* Publisher+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Publisher+Combine.swift"; sourceTree = "<group>"; };
+		F7EA283724D735E300A28C63 /* NetServiceBrowser+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetServiceBrowser+Combine.swift"; sourceTree = "<group>"; };
+		F7EA283824D735E300A28C63 /* NetService+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetService+Combine.swift"; sourceTree = "<group>"; };
+		F7EA283924D735E300A28C63 /* ServiceViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewModels.swift; sourceTree = "<group>"; };
+		F7EA283A24D735E300A28C63 /* ServiceTypesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypesProvider.swift; sourceTree = "<group>"; };
+		F7EA283B24D735E300A28C63 /* ServicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		F7EA283C24D735E300A28C63 /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		F7EA285124D96AC500A28C63 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F781C40121972D7200088C3F /* Frameworks */ = {
+		F7EA280F24D733CC00A28C63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7F6908423173A1D00D15AFF /* Frameworks */ = {
+		F7EA281724D733CC00A28C63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -95,334 +68,199 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F74441A221A0466900551552 /* View Controllers */ = {
+		F7EA280524D733CB00A28C63 = {
 			isa = PBXGroup;
 			children = (
-				F74441A321A0466900551552 /* ServiceViewController.swift */,
-				F74441A421A0466900551552 /* ServicesViewController.swift */,
-				F74441A521A0466900551552 /* ServiceTypesViewController.swift */,
+				F7EA280A24D733CB00A28C63 /* Shared */,
+				F7EA281424D733CC00A28C63 /* iOS */,
+				F7EA281B24D733CC00A28C63 /* macOS */,
+				F7EA281324D733CC00A28C63 /* Products */,
 			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		F781C40521972D7200088C3F /* Francis-macOS */ = {
+		F7EA280A24D733CB00A28C63 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F781C45321972EEE00088C3F /* AppDelegate.swift */,
-				F781C4D92198648A00088C3F /* WindowController.swift */,
-				F74441A221A0466900551552 /* View Controllers */,
-				F781C40C21972D7400088C3F /* Main.storyboard */,
-				F781C40A21972D7400088C3F /* Assets.xcassets */,
-				F781C40F21972D7400088C3F /* Info.plist */,
-			);
-			path = "Francis-macOS";
-			sourceTree = "<group>";
-		};
-		F781C49E219863B400088C3F /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				F781C4A0219863B400088C3F /* ServiceProvider.swift */,
-				F781C4A1219863B400088C3F /* ServiceTypesProvider.swift */,
-				F781C4A2219863B400088C3F /* ServicesProvider.swift */,
-				F781C4A3219863B400088C3F /* Extensions */,
+				F7EA280C24D733CB00A28C63 /* ServiceViews.swift */,
+				F7EA283924D735E300A28C63 /* ServiceViewModels.swift */,
+				F7EA283C24D735E300A28C63 /* ServiceProvider.swift */,
+				F7EA283B24D735E300A28C63 /* ServicesProvider.swift */,
+				F7EA283A24D735E300A28C63 /* ServiceTypesProvider.swift */,
+				F7EA283224D735E300A28C63 /* Extensions */,
+				F7EA280D24D733CC00A28C63 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		F781C4A3219863B400088C3F /* Extensions */ = {
+		F7EA281324D733CC00A28C63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F75FBA1D22C6453900790509 /* NetServiceBrowser+Combine.swift */,
-				F75E78F22313EC7100ABE7B8 /* NetService+Combine.swift */,
-				F75E78F62314A52A00ABE7B8 /* NSArrayController+Combine.swift */,
-				F75E78F92314B0E700ABE7B8 /* Publisher+Combine.swift */,
-				F75E78FC2314B4A600ABE7B8 /* NSViewController+Combine.swift */,
-				F7E6CAB9235BE3A0005981A7 /* NSButton+Combine.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F781C4B9219863E500088C3F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F781C4CC2198644900088C3F /* macOS */,
-				F781C4BA219863FC00088C3F /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F781C4BA219863FC00088C3F /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F781C4BB2198641B00088C3F /* RxCocoa.framework */,
-				F781C4BC2198641B00088C3F /* RxCocoa.framework.dSYM */,
-				F781C4BE2198641B00088C3F /* RxSwift.framework */,
-				F781C4BD2198641B00088C3F /* RxSwift.framework.dSYM */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		F781C4CC2198644900088C3F /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				F781C4CE2198645C00088C3F /* RxCocoa.framework */,
-				F781C4CF2198645C00088C3F /* RxCocoa.framework.dSYM */,
-				F781C4D02198645C00088C3F /* RxSwift.framework */,
-				F781C4CD2198645C00088C3F /* RxSwift.framework.dSYM */,
-			);
-			name = macOS;
-			sourceTree = "<group>";
-		};
-		F7B3CC90205D74B900A72DF0 = {
-			isa = PBXGroup;
-			children = (
-				F781C40521972D7200088C3F /* Francis-macOS */,
-				F7F6908823173A1D00D15AFF /* Francis-SwiftUI */,
-				F781C49E219863B400088C3F /* Shared */,
-				F781C4B9219863E500088C3F /* Frameworks */,
-				F7B3CC9A205D74B900A72DF0 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		F7B3CC9A205D74B900A72DF0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F781C40421972D7200088C3F /* Francis.app */,
-				F7F6908723173A1D00D15AFF /* Francis-SwiftUI.app */,
+				F7EA281224D733CC00A28C63 /* Francis.app */,
+				F7EA281A24D733CC00A28C63 /* Francis.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F7F6908823173A1D00D15AFF /* Francis-SwiftUI */ = {
+		F7EA281424D733CC00A28C63 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F7F6909B23173A2900D15AFF /* Francis-SwiftUI.entitlements */,
-				F7F6908923173A1D00D15AFF /* AppDelegate.swift */,
-				F7F6908B23173A1D00D15AFF /* SceneDelegate.swift */,
-				F7F6908D23173A1D00D15AFF /* ContentView.swift */,
-				F7FCB813231753310026C44D /* ServiceTypesViewModel.swift */,
-				F7F6908F23173A1F00D15AFF /* Assets.xcassets */,
-				F7F6909423173A1F00D15AFF /* LaunchScreen.storyboard */,
-				F7F6909723173A1F00D15AFF /* Info.plist */,
-				F7F6909123173A1F00D15AFF /* Preview Content */,
+				F772B33A24DCCB8300FE136C /* FrancisApp.swift */,
+				F7EA281524D733CC00A28C63 /* Info.plist */,
 			);
-			path = "Francis-SwiftUI";
+			path = iOS;
 			sourceTree = "<group>";
 		};
-		F7F6909123173A1F00D15AFF /* Preview Content */ = {
+		F7EA281B24D733CC00A28C63 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				F7F6909223173A1F00D15AFF /* Preview Assets.xcassets */,
+				F772B33724DCCB5600FE136C /* FrancisApp.swift */,
+				F7EA285124D96AC500A28C63 /* Sidebar.swift */,
+				F7EA281C24D733CC00A28C63 /* Info.plist */,
+				F7EA281D24D733CC00A28C63 /* macOS.entitlements */,
 			);
-			path = "Preview Content";
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		F7EA283224D735E300A28C63 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F7EA283324D735E300A28C63 /* Publisher+Combine.swift */,
+				F7EA283724D735E300A28C63 /* NetServiceBrowser+Combine.swift */,
+				F7EA283824D735E300A28C63 /* NetService+Combine.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F781C40321972D7200088C3F /* Francis-macOS */ = {
+		F7EA281124D733CC00A28C63 /* Francis (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F781C41321972D7400088C3F /* Build configuration list for PBXNativeTarget "Francis-macOS" */;
+			buildConfigurationList = F7EA282624D733CC00A28C63 /* Build configuration list for PBXNativeTarget "Francis (iOS)" */;
 			buildPhases = (
-				F781C40021972D7200088C3F /* Sources */,
-				F781C40121972D7200088C3F /* Frameworks */,
-				F781C40221972D7200088C3F /* Resources */,
+				F7EA280E24D733CC00A28C63 /* Sources */,
+				F7EA280F24D733CC00A28C63 /* Frameworks */,
+				F7EA281024D733CC00A28C63 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Francis-macOS";
-			productName = "Francis-macOS";
-			productReference = F781C40421972D7200088C3F /* Francis.app */;
+			name = "Francis (iOS)";
+			productName = "Francis (iOS)";
+			productReference = F7EA281224D733CC00A28C63 /* Francis.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F7F6908623173A1D00D15AFF /* Francis-SwiftUI */ = {
+		F7EA281924D733CC00A28C63 /* Francis (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7F6909823173A1F00D15AFF /* Build configuration list for PBXNativeTarget "Francis-SwiftUI" */;
+			buildConfigurationList = F7EA282924D733CC00A28C63 /* Build configuration list for PBXNativeTarget "Francis (macOS)" */;
 			buildPhases = (
-				F7F6908323173A1D00D15AFF /* Sources */,
-				F7F6908423173A1D00D15AFF /* Frameworks */,
-				F7F6908523173A1D00D15AFF /* Resources */,
+				F7EA281624D733CC00A28C63 /* Sources */,
+				F7EA281724D733CC00A28C63 /* Frameworks */,
+				F7EA281824D733CC00A28C63 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Francis-SwiftUI";
-			productName = "Francis-SwiftUI";
-			productReference = F7F6908723173A1D00D15AFF /* Francis-SwiftUI.app */;
+			name = "Francis (macOS)";
+			productName = "Francis (macOS)";
+			productReference = F7EA281A24D733CC00A28C63 /* Francis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F7B3CC91205D74B900A72DF0 /* Project object */ = {
+		F7EA280624D733CB00A28C63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "Andrew Shepard";
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					F781C40321972D7200088C3F = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.Sandbox = {
-								enabled = 0;
-							};
-						};
+					F7EA281124D733CC00A28C63 = {
+						CreatedOnToolsVersion = 12.0;
 					};
-					F7F6908623173A1D00D15AFF = {
-						CreatedOnToolsVersion = 11.0;
-						ProvisioningStyle = Automatic;
+					F7EA281924D733CC00A28C63 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
-			buildConfigurationList = F7B3CC94205D74B900A72DF0 /* Build configuration list for PBXProject "Francis" */;
-			compatibilityVersion = "Xcode 8.0";
+			buildConfigurationList = F7EA280924D733CB00A28C63 /* Build configuration list for PBXProject "Francis" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = F7B3CC90205D74B900A72DF0;
-			productRefGroup = F7B3CC9A205D74B900A72DF0 /* Products */;
+			mainGroup = F7EA280524D733CB00A28C63;
+			productRefGroup = F7EA281324D733CC00A28C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F781C40321972D7200088C3F /* Francis-macOS */,
-				F7F6908623173A1D00D15AFF /* Francis-SwiftUI */,
+				F7EA281124D733CC00A28C63 /* Francis (iOS) */,
+				F7EA281924D733CC00A28C63 /* Francis (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F781C40221972D7200088C3F /* Resources */ = {
+		F7EA281024D733CC00A28C63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F781C40B21972D7400088C3F /* Assets.xcassets in Resources */,
-				F781C40E21972D7400088C3F /* Main.storyboard in Resources */,
+				F7EA282224D733CC00A28C63 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7F6908523173A1D00D15AFF /* Resources */ = {
+		F7EA281824D733CC00A28C63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7F6909623173A1F00D15AFF /* LaunchScreen.storyboard in Resources */,
-				F7F6909323173A1F00D15AFF /* Preview Assets.xcassets in Resources */,
-				F7F6909023173A1F00D15AFF /* Assets.xcassets in Resources */,
+				F7EA282324D733CC00A28C63 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F781C40021972D7200088C3F /* Sources */ = {
+		F7EA280E24D733CC00A28C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75E78F72314A52A00ABE7B8 /* NSArrayController+Combine.swift in Sources */,
-				F75E78FD2314B4A600ABE7B8 /* NSViewController+Combine.swift in Sources */,
-				F781C4AD219863B400088C3F /* ServicesProvider.swift in Sources */,
-				F74441A821A0466900551552 /* ServiceTypesViewController.swift in Sources */,
-				F781C4AB219863B400088C3F /* ServiceTypesProvider.swift in Sources */,
-				F781C4DA2198648A00088C3F /* WindowController.swift in Sources */,
-				F75FBA1E22C6453900790509 /* NetServiceBrowser+Combine.swift in Sources */,
-				F74441A721A0466900551552 /* ServicesViewController.swift in Sources */,
-				F7E6CABA235BE3A0005981A7 /* NSButton+Combine.swift in Sources */,
-				F74441A621A0466900551552 /* ServiceViewController.swift in Sources */,
-				F75E78F32313EC7100ABE7B8 /* NetService+Combine.swift in Sources */,
-				F75E78FA2314B0E700ABE7B8 /* Publisher+Combine.swift in Sources */,
-				F781C4A9219863B400088C3F /* ServiceProvider.swift in Sources */,
-				F781C45421972EEE00088C3F /* AppDelegate.swift in Sources */,
+				F7EA284F24D735E300A28C63 /* ServiceProvider.swift in Sources */,
+				F7EA284B24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */,
+				F772B33B24DCCB8300FE136C /* FrancisApp.swift in Sources */,
+				F7EA282024D733CC00A28C63 /* ServiceViews.swift in Sources */,
+				F7EA284524D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */,
+				F7EA284924D735E300A28C63 /* ServiceViewModels.swift in Sources */,
+				F7EA284724D735E300A28C63 /* NetService+Combine.swift in Sources */,
+				F7EA284D24D735E300A28C63 /* ServicesProvider.swift in Sources */,
+				F7EA283D24D735E300A28C63 /* Publisher+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7F6908323173A1D00D15AFF /* Sources */ = {
+		F7EA281624D733CC00A28C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7FCB816231753740026C44D /* ServiceTypesProvider.swift in Sources */,
-				F7FCB814231753310026C44D /* ServiceTypesViewModel.swift in Sources */,
-				F7FCB815231753740026C44D /* ServiceProvider.swift in Sources */,
-				F7FCB819231753800026C44D /* NetService+Combine.swift in Sources */,
-				F7F6908A23173A1D00D15AFF /* AppDelegate.swift in Sources */,
-				F7FCB817231753740026C44D /* ServicesProvider.swift in Sources */,
-				F7FCB81B231753800026C44D /* Publisher+Combine.swift in Sources */,
-				F7F6908C23173A1D00D15AFF /* SceneDelegate.swift in Sources */,
-				F7FCB818231753800026C44D /* NetServiceBrowser+Combine.swift in Sources */,
-				F7F6908E23173A1D00D15AFF /* ContentView.swift in Sources */,
+				F7EA285224D96AC500A28C63 /* Sidebar.swift in Sources */,
+				F7EA285024D735E300A28C63 /* ServiceProvider.swift in Sources */,
+				F7EA284C24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */,
+				F7EA282124D733CC00A28C63 /* ServiceViews.swift in Sources */,
+				F7EA284624D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */,
+				F7EA284A24D735E300A28C63 /* ServiceViewModels.swift in Sources */,
+				F7EA284824D735E300A28C63 /* NetService+Combine.swift in Sources */,
+				F772B33924DCCB5900FE136C /* FrancisApp.swift in Sources */,
+				F7EA284E24D735E300A28C63 /* ServicesProvider.swift in Sources */,
+				F7EA283E24D735E300A28C63 /* Publisher+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		F781C40C21972D7400088C3F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F781C40D21972D7400088C3F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F7F6909423173A1F00D15AFF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F7F6909523173A1F00D15AFF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		F781C41121972D7400088C3F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Francis-macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-macOS";
-				PRODUCT_NAME = Francis;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		F781C41221972D7400088C3F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Francis-macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-macOS";
-				PRODUCT_NAME = Francis;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		F7B3CCA7205D74B900A72DF0 /* Debug */ = {
+		F7EA282424D733CC00A28C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -432,6 +270,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -447,13 +286,13 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -472,18 +311,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		F7B3CCA8205D74B900A72DF0 /* Release */ = {
+		F7EA282524D733CC00A28C63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -493,6 +329,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -508,13 +345,13 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -527,96 +364,131 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		F7F6909923173A1F00D15AFF /* Debug */ = {
+		F7EA282724D733CC00A28C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = "Francis-SwiftUI/Francis-SwiftUI.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Francis-SwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Francis-SwiftUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-SwiftUI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = Francis;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		F7F6909A23173A1F00D15AFF /* Release */ = {
+		F7EA282824D733CC00A28C63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = "Francis-SwiftUI/Francis-SwiftUI.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Francis-SwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Francis-SwiftUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.Francis-SwiftUI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = Francis;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
+		F7EA282A24D733CC00A28C63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = Francis;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F7EA282B24D733CC00A28C63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.andyshep.Francis;
+				PRODUCT_NAME = Francis;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F781C41321972D7400088C3F /* Build configuration list for PBXNativeTarget "Francis-macOS" */ = {
+		F7EA280924D733CB00A28C63 /* Build configuration list for PBXProject "Francis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F781C41121972D7400088C3F /* Debug */,
-				F781C41221972D7400088C3F /* Release */,
+				F7EA282424D733CC00A28C63 /* Debug */,
+				F7EA282524D733CC00A28C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7B3CC94205D74B900A72DF0 /* Build configuration list for PBXProject "Francis" */ = {
+		F7EA282624D733CC00A28C63 /* Build configuration list for PBXNativeTarget "Francis (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F7B3CCA7205D74B900A72DF0 /* Debug */,
-				F7B3CCA8205D74B900A72DF0 /* Release */,
+				F7EA282724D733CC00A28C63 /* Debug */,
+				F7EA282824D733CC00A28C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7F6909823173A1F00D15AFF /* Build configuration list for PBXNativeTarget "Francis-SwiftUI" */ = {
+		F7EA282924D733CC00A28C63 /* Build configuration list for PBXNativeTarget "Francis (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F7F6909923173A1F00D15AFF /* Debug */,
-				F7F6909A23173A1F00D15AFF /* Release */,
+				F7EA282A24D733CC00A28C63 /* Debug */,
+				F7EA282B24D733CC00A28C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F7B3CC91205D74B900A72DF0 /* Project object */;
+	rootObject = F7EA280624D733CB00A28C63 /* Project object */;
 }

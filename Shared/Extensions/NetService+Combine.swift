@@ -11,6 +11,7 @@ import Combine
 
 enum NetServicePublisherError: Error {
     case cannotResolveService
+    case error(userInfo:  [String : NSNumber])
 }
 
 final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceDelegate where SubscriberType.Input == NetService {
@@ -43,7 +44,7 @@ final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscr
     }
     
     func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        //
+        // TODO: send error thru subscriber
     }
 }
 
@@ -107,10 +108,12 @@ extension NetService {
                     defer { buffer.deallocate() }
                     
                     guard
-                        let bytes = inet_ntop(Int32(sockaddr_in6.pointee.sin6_family),
-                                              &sin6AddressPtr,
-                                              buffer,
-                                              __uint32_t(INET6_ADDRSTRLEN)),
+                        let bytes = inet_ntop(
+                            Int32(sockaddr_in6.pointee.sin6_family),
+                            &sin6AddressPtr,
+                            buffer,
+                            __uint32_t(INET6_ADDRSTRLEN)
+                        ),
                         let address = String(cString: bytes, encoding: .ascii)
                         else { return nil }
                     return address

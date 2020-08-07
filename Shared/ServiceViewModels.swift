@@ -1,5 +1,5 @@
 //
-//  ServiceTypesViewModel.swift
+//  ServiceViewModels.swift
 //  Francis-SwiftUI
 //
 //  Created by Andrew Shepard on 8/28/19.
@@ -13,18 +13,19 @@ class ServiceTypesViewModel: ObservableObject {
     @Published var serviceTypes: [NetService] = []
     
     private let serviceTypesProvider: ServiceTypesProvider
-    private var cancelables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
     
     init(serviceTypesProvider: ServiceTypesProvider) {
         self.serviceTypesProvider = serviceTypesProvider
         
         serviceTypesProvider.serviceTypes
+//            .print()
             .assign(to: \.serviceTypes, on: self)
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
     
     deinit {
-        cancelables.forEach { $0.cancel() }
+        cancellables.forEach { $0.cancel() }
     }
 }
 
@@ -32,18 +33,18 @@ class ServicesViewModel: ObservableObject {
     @Published var services: [NetService] = []
     
     let servicesProvider: ServicesProvider
-    private var cancelables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
     
     init(servicesProvider: ServicesProvider) {
         self.servicesProvider = servicesProvider
      
         servicesProvider.services
             .assign(to: \.services, on: self)
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
     
     deinit {
-        cancelables.forEach { $0.cancel() }
+        cancellables.forEach { $0.cancel() }
     }
 }
 
@@ -52,7 +53,7 @@ class ServiceViewModel: ObservableObject {
     
     private let service: NetService
     private(set) lazy var serviceProvider = ServiceProvider(service: self.service)
-    private var cancelables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
     
     init(service: NetService) {
         self.service = service
@@ -66,11 +67,11 @@ class ServiceViewModel: ObservableObject {
                 }
             }
             .assign(to: \.entries, on: self)
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
     
     deinit {
-        cancelables.forEach { $0.cancel() }
+        cancellables.forEach { $0.cancel() }
     }
 }
 

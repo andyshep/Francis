@@ -9,7 +9,15 @@
 import Foundation
 import Combine
 
-final class ServiceTypesProvider {
+final class ServiceTypesProvider: ObservableObject {
+    
+    enum State {
+        case loading
+        case current(services: [NetService])
+        case error(error: Error)
+    }
+    
+    @Published var state: ServiceTypesProvider.State = .loading
     
     /// To be triggered when the view model should be refreshed. The service
     /// browser will stop and restart, and the list of services types will refresh.
@@ -27,21 +35,21 @@ final class ServiceTypesProvider {
     private var browser = NetServiceBrowser()
     private var browserSubscription: AnyCancellable?
     
-    private var cancelables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
     
     init() {
         _refreshEvent
             .sink { [weak self] _ in
                 self?.stopAndRefreshBrowsing()
             }
-            .store(in: &cancelables)
+            .store(in: &cancellables)
         
         bind(to: browser)
     }
     
     deinit {
         browser.stop()
-        cancelables.forEach { $0.cancel() }
+        cancellables.forEach { $0.cancel() }
     }
     
     private func stopAndRefreshBrowsing() {

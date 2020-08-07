@@ -27,13 +27,16 @@ final class ServicesProvider {
     }
     private let _title = CurrentValueSubject<String, Never>.init("")
     
-    private var cancelables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
     private let browser = NetServiceBrowser()
     
     init(service: NetService) {
         _title.send(service.name)
         
         refreshEvent
+            .do(onNext: { [unowned self] in
+                self._services.send([])
+            })
             .map { _ -> String in
                 let type = service.type
                 guard let range = type.range(of: ".") else { return "" }
@@ -46,7 +49,7 @@ final class ServicesProvider {
 
                 return "\(service.name).\(String(prefix))"
             }
-            .flatMap { [unowned self] query -> NetServiceBrowserPublisher in
+            .flatMapLatest { [unowned self] query -> NetServiceBrowserPublisher in
                 return self.browser.publisherForServices(type: query)
             }
             .sink { [weak self] (result) in
@@ -62,11 +65,11 @@ final class ServicesProvider {
                     print("unhandled error: \(error)")
                 }
             }
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
 
     deinit {
         browser.stop()
-        cancelables.forEach { $0.cancel() }
+        cancellables.forEach { $0.cancel() }
     }
 }

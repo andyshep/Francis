@@ -14,3 +14,21 @@ extension Publisher {
         map(transform).switchToLatest()
     }
 }
+
+extension Publisher {
+    func `do`(onNext next: @escaping () -> ()) -> Publishers.HandleEvents<Self> {
+        return handleEvents(receiveOutput: { _ in
+            next()
+        })
+    }
+    
+    func `do`(onNext next: @escaping (Output) -> ()) -> Publishers.HandleEvents<Self> {
+        return handleEvents(receiveOutput: { output in
+            next(output)
+        })
+    }
+    
+    func toVoid() -> Publishers.Map<Self, Void> {
+        return map { _ in () }
+    }
+}

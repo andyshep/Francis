@@ -1,9 +1,8 @@
 //
-//  ContentView.swift
-//  Francis-SwiftUI
+//  ServiceViews.swift
+//  Shared
 //
-//  Created by Andrew Shepard on 8/28/19.
-//  Copyright © 2019 Andrew Shepard. All rights reserved.
+//  Created by Andrew Shepard on 8/2/20.
 //
 
 import SwiftUI
@@ -11,36 +10,48 @@ import SwiftUI
 struct ServiceTypesListView: View {
     @ObservedObject var viewModel: ServiceTypesViewModel
     
+    @Binding var selectedServiceType: NetService?
+    @Binding var selectedService: NetService?
+    
     var body: some View {
-        NavigationView {
-            List(viewModel.serviceTypes) { service in
-                NavigationLink(destination: ServicesListView(service: service)) {
-                    ServiceNameView(service: service)
+        List(selection: $selectedServiceType) {
+            ForEach(viewModel.serviceTypes) { serviceType in
+                let destination = ServicesListView(
+                    serviceType: serviceType,
+                    selectedService: $selectedService
+                )
+                NavigationLink(destination: destination) {
+                    ServiceNameView(service: serviceType)
                 }
             }
-            .navigationBarTitle(Text("Services Types"))
         }
     }
 }
 
 struct ServicesListView: View {
     @ObservedObject var viewModel: ServicesViewModel
+    @Binding var selectedService: NetService?
     
-    init(service: NetService) {
-        let provider = ServicesProvider(service: service)
+    init(serviceType: NetService, selectedService: Binding<NetService?>) {
+        let provider = ServicesProvider(service: serviceType)
         self.viewModel = ServicesViewModel(servicesProvider: provider)
+        self._selectedService = selectedService
     }
     
     var body: some View {
-        List(viewModel.services) { service in
-            NavigationLink(destination: ServiceView(service: service)) {
-                ServiceNameView(service: service)
+        List(selection: $selectedService) {
+            ForEach(viewModel.services) { service in
+                NavigationLink(destination: ServiceView(service: service)) {
+                    ServiceNameView(service: service)
+                }
             }
         }
+//        #if os(iOS)
+//        .navigationTitle("Services")
+////        #endif
         .onAppear {
             self.viewModel.servicesProvider.refreshEvent.send(())
         }
-        .navigationBarTitle(Text("Services"))
     }
 }
 
@@ -61,7 +72,7 @@ struct ServiceView: View {
         .onAppear {
             self.viewModel.serviceProvider.refreshEvent.send(())
         }
-        .navigationBarTitle(self.service.name)
+        .navigationTitle(self.service.name)
     }
 }
 
