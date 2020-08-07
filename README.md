@@ -1,12 +1,11 @@
 # Francis
 
-Francis is an app for discovering Bonjour services on the local network. It is built with a Combine layer on top of `NetServiceBrowser` and `NetService`. The app runs on both macOS and iOS.
+Francis is a SwiftUI app for discovering Bonjour services on the local network. It is built with a Combine layer on top of `NetServiceBrowser` and `NetService`.
 
 ## Requirements
 
-* Xcode 11
+* Xcode 12
 * Swift 5
-* macOS 10.15 or iOS 13
 
 ## Installation
 
