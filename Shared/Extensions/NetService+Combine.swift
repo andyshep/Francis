@@ -14,7 +14,7 @@ enum NetServicePublisherError: Error {
     case error(userInfo:  [String : NSNumber])
 }
 
-final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceDelegate where SubscriberType.Input == NetService {
+final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceDelegate where SubscriberType.Input == NetService, SubscriberType.Failure == Error {
     
     private var subscriber: SubscriberType?
     private let service: NetService
@@ -44,7 +44,7 @@ final class NetServiceSubscription<SubscriberType: Subscriber>: NSObject, Subscr
     }
     
     func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        // TODO: send error thru subscriber
+        _ = subscriber?.receive(completion: .failure(NetServicePublisherError.cannotResolveService))
     }
 }
 

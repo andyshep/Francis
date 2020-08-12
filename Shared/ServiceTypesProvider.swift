@@ -9,78 +9,85 @@
 import Foundation
 import Combine
 
-final class ServiceTypesProvider: ObservableObject {
+final class ServiceTypesProvider {
     
-    enum State {
-        case loading
-        case current(services: [NetService])
-        case error(error: Error)
-    }
+    private let browser: NetServiceBrowser
     
-    @Published var state: ServiceTypesProvider.State = .loading
-    
-    /// To be triggered when the view model should be refreshed. The service
-    /// browser will stop and restart, and the list of services types will refresh.
-    var refreshEvent: AnySubscriber<Void, Never> {
-        return AnySubscriber(_refreshEvent)
-    }
-    private let _refreshEvent = PassthroughSubject<Void, Never>()
-    
-    /// Emits with the list of service types for browsing.
-    var serviceTypes: AnyPublisher<[NetService], Never> {
-        return _services.eraseToAnyPublisher()
-    }
-    private let _services = CurrentValueSubject<[NetService], Never>.init([])
-    
-    private var browser = NetServiceBrowser()
-    private var browserSubscription: AnyCancellable?
-    
-    private var cancellables: [AnyCancellable] = []
-    
-    init() {
-        _refreshEvent
-            .sink { [weak self] _ in
-                self?.stopAndRefreshBrowsing()
-            }
-            .store(in: &cancellables)
-        
-        bind(to: browser)
+    init(browser: NetServiceBrowser = NetServiceBrowser()) {
+        self.browser = browser
     }
     
     deinit {
         browser.stop()
-        cancellables.forEach { $0.cancel() }
+    }
+}
+
+extension ServiceTypesProvider {
+    func publisherForServiceTypes() -> AnyPublisher<[NetService], Error> {
+        var results: [NetService] = []
+        
+        return browser.publisherForSearchTypes()
+            .map { services -> [NetService] in
+                results.append(contentsOf: services)
+                let sorted = results.unique.sorted(by: { $0.name < $1.name })
+                return sorted
+            }
+            .eraseToAnyPublisher()
     }
     
-    private func stopAndRefreshBrowsing() {
-        browser.stop()
-        browserSubscription?.cancel()
+    func publisherForServices(for serviceType: NetService) -> AnyPublisher<[NetService], Error> {
+        var results: [NetService] = []
         
-        browser = NetServiceBrowser()
-        _services.send([])
-        
-        bind(to: browser)
+        return browser.publisherForServices(type: serviceType.query)
+            .map { services -> [NetService] in
+                results.append(contentsOf: services)
+                let sorted = results.unique.sorted(by: { return $0.name > $1.name })
+                return sorted
+            }
+            .eraseToAnyPublisher()
     }
     
-    private func bind(to browser: NetServiceBrowser) {
-        browserSubscription = browser
-            .publisherForSearchTypes()
-            .sink { [weak self] (result) in
-                guard let this = self else { return }
-                
-                switch result {
-                case .success(let services):
-                    var contents = this._services.value
-                    contents.append(contentsOf: services)
-                    
-                    let ordered = contents.unique
-                        .sorted(by: { $0.name < $1.name })
-                    
-                    this._services.send(ordered)
-                case .failure(let error):
-                    print("unhandled error: \(error)")
+    func publisherForServiceRecord(for service: NetService) -> AnyPublisher<[Entry], Error> {
+        let servicePublisher = service.publisherForResolving()
+            .eraseToAnyPublisher()
+            .share()
+
+        let addressesPublisher = servicePublisher
+            .map { service -> [String: String] in
+                var result: [String: String] = [:]
+                result["IPv4"] = service.addressIPv4
+                result["IPv6"] = service.addressIPv6
+
+                return result
+            }
+            .share()
+            .eraseToAnyPublisher()
+        
+        return Publishers.CombineLatest(servicePublisher, addressesPublisher)
+            .map { (resolved, addresses) -> ((NetService, [String: Data]), [String: String]) in
+                guard let data = service.txtRecordData() else { return ((resolved, [:]), addresses) }
+                return ((service, NetService.dictionary(fromTXTRecord: data)), addresses)
+            }
+            .map { (result) -> [String: String] in
+                let ((_, dataDictionary), addresses) = result
+                var dictionary = dataDictionary.mapValues { (value) -> String in
+                    return String(data: value, encoding: .utf8) ?? ""
+                }
+
+                addresses.forEach { (key, value) in
+                    dictionary[key] = value
+                }
+
+                return dictionary
+            }
+            .map { (dictionary) -> [Entry] in
+                dictionary.reduce(into: [Entry]()) { (accumlator, input) in
+                    let (key, value) = input
+                    let entry = Entry(title: key, subtitle: value)
+                    accumlator.append(entry)
                 }
             }
+            .eraseToAnyPublisher()
     }
 }
 
@@ -88,4 +95,25 @@ private extension Array where Element: Hashable {
     var unique: [Element] {
         return Array(Set(self))
     }
+}
+
+private extension NetService {
+    var query: String {
+        guard let range = type.range(of: ".") else { return "" }
+        
+        let index = type.index(
+            type.startIndex,
+            offsetBy: range.lowerBound.utf16Offset(in: type)
+        )
+        let prefix = type[..<index]
+
+        return "\(name).\(String(prefix))"
+    }
+}
+
+struct Entry: Identifiable, Hashable {
+    var id: UUID = UUID()
+    
+    let title: String
+    let subtitle: String
 }

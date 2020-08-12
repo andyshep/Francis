@@ -8,71 +8,90 @@
 import SwiftUI
 
 struct ServiceTypesListView: View {
-    @ObservedObject var viewModel: ServiceTypesViewModel
-    
-    @Binding var selectedServiceType: NetService?
-    @Binding var selectedService: NetService?
+    @EnvironmentObject var store: AppStore
     
     var body: some View {
-        List(selection: $selectedServiceType) {
-            ForEach(viewModel.serviceTypes) { serviceType in
-                let destination = ServicesListView(
-                    serviceType: serviceType,
-                    selectedService: $selectedService
-                )
-                NavigationLink(destination: destination) {
-                    ServiceNameView(service: serviceType)
+        VStack(spacing: 0) {
+            List {
+                Section(header: Text("_services._dns-sd._udp")) {
+                    ForEach(store.state.servicesTypes) { serviceType in
+                        #if os(iOS)
+                        let destination = ServicesListView(
+                            serviceType: serviceType
+                        )
+                        .environmentObject(store)
+                        .navigationTitle(serviceType.name)
+                        #elseif os(macOS)
+                        let destination = ServicesListView(
+                            serviceType: serviceType
+                        )
+                        #endif
+                        NavigationLink(destination: destination) {
+                            ServiceNameView(service: serviceType)
+                        }
+                    }
                 }
             }
+            Divider()
+            StatusBarView(
+                label: "\(store.state.servicesTypes.count) services"
+            )
+        }
+        .onAppear {
+            store.send(.loadServiceTypes)
         }
     }
 }
 
 struct ServicesListView: View {
-    @ObservedObject var viewModel: ServicesViewModel
-    @Binding var selectedService: NetService?
+    @EnvironmentObject var store: AppStore
     
-    init(serviceType: NetService, selectedService: Binding<NetService?>) {
-        let provider = ServicesProvider(service: serviceType)
-        self.viewModel = ServicesViewModel(servicesProvider: provider)
-        self._selectedService = selectedService
-    }
+    let serviceType: NetService
     
     var body: some View {
-        List(selection: $selectedService) {
-            ForEach(viewModel.services) { service in
-                NavigationLink(destination: ServiceView(service: service)) {
-                    ServiceNameView(service: service)
-                }
+        List(store.state.services) { service in
+            let destination = ServiceView(service: service)
+                .environmentObject(store)
+            NavigationLink(destination: destination) {
+                ServiceNameView(service: service)
             }
         }
-//        #if os(iOS)
-//        .navigationTitle("Services")
-////        #endif
+        .listStyle(PlainListStyle())
         .onAppear {
-            self.viewModel.servicesProvider.refreshEvent.send(())
+            store.send(.loadServices(serviceType: serviceType))
         }
     }
 }
 
 struct ServiceView: View {
-    @ObservedObject var viewModel: ServiceViewModel
+    @EnvironmentObject var store: AppStore
     
     private let service: NetService
     
     init(service: NetService) {
         self.service = service
-        self.viewModel = ServiceViewModel(service: service)
     }
     
     var body: some View {
-        List(viewModel.entries) { entry in
-            EntryView(entry: entry)
+        List {
+            VStack(alignment: .custom) {
+                HeaderView(title1: "Key", title2: "Value")
+                    .padding(.top, 5)
+                ForEach(store.state.records, id: \.self) { entry in
+                    EntryView(title: entry.title, subtitle: entry.subtitle)
+                        .padding(2)
+//                        .background((self.selectedValue == entry) ? Color.red : Color.clear)
+//                        .onTapGesture {
+//                            self.selectedValue = entry
+//                        }
+                }
+            }
         }
+        .listStyle(PlainListStyle())
+        .padding(0)
         .onAppear {
-            self.viewModel.serviceProvider.refreshEvent.send(())
+            store.send(.loadServiceRecord(service: service))
         }
-        .navigationTitle(self.service.name)
     }
 }
 
@@ -81,16 +100,56 @@ struct ServiceNameView: View {
     
     var body: some View {
         Text(service.name)
+            .padding(3)
     }
 }
 
 struct EntryView: View {
-    var entry: Entry
+    var title: String
+    var subtitle: String
     
     var body: some View {
-        VStack {
-            Text(entry.title)
-            Text(entry.subtitle)
+        HStack {
+            Text(title)
+                .foregroundColor(Color.secondary)
+            Text(subtitle)
+                .font(.system(.body, design: .monospaced))
+                .alignmentGuide(.custom) { $0[.leading] + 8 }
         }
     }
+}
+
+struct HeaderView: View {
+    var title1: String
+    var title2: String
+    
+    var body: some View {
+        HStack {
+            Text(title1)
+                .font(Font.subheadline.bold().smallCaps())
+            Text(title2)
+                .font(Font.subheadline.bold().smallCaps())
+                .alignmentGuide(.custom) { $0[.leading] + 8 }
+        }
+    }
+}
+
+struct StatusBarView: View {
+    var label: String
+    
+    var body: some View {
+        Text(label)
+            .font(.subheadline)
+            .frame(height: 26)
+    }
+}
+
+struct CustomAlignment: AlignmentID {
+    static func defaultValue(in context: ViewDimensions) -> CGFloat {
+        return context[.leading]
+    }
+}
+
+extension HorizontalAlignment {
+    static let custom: HorizontalAlignment = HorizontalAlignment(CustomAlignment.self)
 }

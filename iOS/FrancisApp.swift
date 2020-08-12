@@ -7,28 +7,31 @@
 
 import SwiftUI
 
+typealias AppStore = Store<AppState, AppAction, AppEnvironment>
+
 @main
 struct FrancisApp: App {
     
-    @StateObject private var provider = ServiceTypesProvider()
+    private let store = AppStore(
+        initial: .init(),
+        reducer: appReducer,
+        environment: AppEnvironment()
+    )
     
-    @State private var selectedServiceType: NetService?
     @State private var selectedService: NetService?
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ServiceTypesListView(
-                    viewModel: ServiceTypesViewModel(serviceTypesProvider: provider),
-                    selectedServiceType: $selectedServiceType,
-                    selectedService: $selectedService
-                )
-                .navigationTitle("Service Types")
-                .toolbar {
-                     Button(action: refresh) {
-                         Label("Refresh", systemImage: "arrow.clockwise")
-                     }
-                }
+                ServiceTypesListView()
+                    .listStyle(PlainListStyle())
+                    .navigationTitle("Service Types")
+                    .environmentObject(store)
+//                .toolbar {
+//                     Button(action: refresh) {
+//                         Label("Refresh", systemImage: "arrow.clockwise")
+//                     }
+//                }
             }
         }
     }

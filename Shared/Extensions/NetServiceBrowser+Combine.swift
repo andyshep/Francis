@@ -9,7 +9,12 @@
 import Foundation
 import Combine
 
-final class NetServiceBrowserSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceBrowserDelegate where SubscriberType.Input == Result<[NetService], Error> {
+enum BrowserError: Error {
+    case searchFailed(info: [String: NSNumber])
+}
+
+final class NetServiceBrowserSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceBrowserDelegate where SubscriberType.Input == [NetService], SubscriberType.Failure == Error {
+    
     private var subscriber: SubscriberType?
     private let browser: NetServiceBrowser
     private let type: String
@@ -38,17 +43,17 @@ final class NetServiceBrowserSubscription<SubscriberType: Subscriber>: NSObject,
     // MARK: <NetServiceBrowserDelegate>
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        _ = subscriber?.receive(.success([service]))
+        _ = subscriber?.receive([service])
     }
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        //
+        _ = subscriber?.receive(completion: .failure(BrowserError.searchFailed(info: errorDict)))
     }
 }
 
 struct NetServiceBrowserPublisher: Publisher {
-    typealias Output = Result<[NetService], Error>
-    typealias Failure = Never
+    typealias Output = [NetService]
+    typealias Failure = Error
     
     private let type: String
     private let domain: String

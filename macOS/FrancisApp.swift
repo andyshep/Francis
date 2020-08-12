@@ -7,40 +7,40 @@
 
 import SwiftUI
 
+typealias AppStore = Store<AppState, AppAction, AppEnvironment>
+
 @main
 struct FrancisApp: App {
     
-    @StateObject private var provider = ServiceTypesProvider()
+    private let store = AppStore(
+        initial: .init(),
+        reducer: appReducer,
+        environment: AppEnvironment()
+    )
     
-    @State private var selectedServiceType: NetService?
-    @State private var selectedService: NetService?
-    
+    @ViewBuilder
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ServiceTypesListView(
-                    viewModel: ServiceTypesViewModel(serviceTypesProvider: provider),
-                    selectedServiceType: $selectedServiceType,
-                    selectedService: $selectedService
-                )
+                ServiceTypesListView()
+                    .frame(
+                        minWidth: 100,
+                        idealWidth: 150,
+                        maxWidth: .infinity,
+                        maxHeight: .infinity
+                    )
+                    .environmentObject(store)
 
-                if let serviceType = selectedServiceType {
-                    ServicesListView(serviceType: serviceType, selectedService: $selectedService)
-                } else {
-                    Text("Select Service Type")
-                }
-                
-                if let service = selectedService {
-                    ServiceView(service: service)
-                } else {
-                    Text("Select Service")
-                }
+                Text("Select Service Type")
+                Text("Select Service")
             }
-//            .navigationTitle("")
             .toolbar {
-                 Button(action: refresh) {
-                     Label("Refresh", systemImage: "arrow.clockwise")
-                 }
+                Button(action: refresh) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+                Button(action: share) {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                }
              }
         }
         .windowStyle(TitleBarWindowStyle())
@@ -48,6 +48,11 @@ struct FrancisApp: App {
     }
     
     private func refresh() {
-        
+        store.send(.refresh)
+    }
+    
+    private func share() {
+        store.send(.share)
     }
 }
+
