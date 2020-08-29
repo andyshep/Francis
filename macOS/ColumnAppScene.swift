@@ -1,24 +1,15 @@
 //
-//  FrancisApp.swift
+//  ColumnAppScene.swift
 //  Francis (macOS)
 //
-//  Created by Andrew Shepard on 8/6/20.
+//  Created by Andrew Shepard on 8/28/20.
 //
 
 import SwiftUI
 
-typealias AppStore = Store<AppState, AppAction, AppEnvironment>
-
-@main
-struct FrancisApp: App {
+struct ColumnAppScene: Scene {
+    @ObservedObject var store: AppStore
     
-    private let store = AppStore(
-        initial: .init(),
-        reducer: appReducer,
-        environment: AppEnvironment()
-    )
-    
-    @ViewBuilder
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -46,13 +37,14 @@ struct FrancisApp: App {
         .windowStyle(TitleBarWindowStyle())
         .windowToolbarStyle(UnifiedWindowToolbarStyle())
     }
-    
-    private func refresh() {
+}
+
+private extension ColumnAppScene {
+    func refresh() {
         store.send(.refresh)
     }
     
-    private func share() {
+    func share() {
         store.send(.share)
     }
 }
-

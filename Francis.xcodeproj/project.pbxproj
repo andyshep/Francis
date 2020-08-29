@@ -11,10 +11,16 @@
 		F72B92AE24E0C6BD00E1C008 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B92AC24E0C6BD00E1C008 /* AppState.swift */; };
 		F72B92B024E0C9F400E1C008 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B92AF24E0C9F400E1C008 /* AppEnvironment.swift */; };
 		F72B92B124E0C9F400E1C008 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B92AF24E0C9F400E1C008 /* AppEnvironment.swift */; };
-		F772B33924DCCB5900FE136C /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772B33724DCCB5600FE136C /* FrancisApp.swift */; };
-		F772B33B24DCCB8300FE136C /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772B33A24DCCB8300FE136C /* FrancisApp.swift */; };
-		F7EA282024D733CC00A28C63 /* ServiceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceViews.swift */; };
-		F7EA282124D733CC00A28C63 /* ServiceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceViews.swift */; };
+		F73E9AFC24F929A300FA1584 /* CompactAppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9AFB24F929A300FA1584 /* CompactAppScene.swift */; };
+		F73E9AFE24F92A3200FA1584 /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9AFD24F92A3200FA1584 /* FrancisApp.swift */; };
+		F73E9B0024F92AAC00FA1584 /* ColumnAppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9AFF24F92AAC00FA1584 /* ColumnAppScene.swift */; };
+		F73E9B0124F92B1600FA1584 /* FrancisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9AFD24F92A3200FA1584 /* FrancisApp.swift */; };
+		F73E9B0424F9D83800FA1584 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9B0324F9D83800FA1584 /* ServiceView.swift */; };
+		F73E9B0524F9D83800FA1584 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9B0324F9D83800FA1584 /* ServiceView.swift */; };
+		F73E9B0724F9D8BD00FA1584 /* ServicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9B0624F9D8BD00FA1584 /* ServicesListView.swift */; };
+		F73E9B0824F9D8BD00FA1584 /* ServicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E9B0624F9D8BD00FA1584 /* ServicesListView.swift */; };
+		F7EA282024D733CC00A28C63 /* ServiceTypesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceTypesListView.swift */; };
+		F7EA282124D733CC00A28C63 /* ServiceTypesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA280C24D733CB00A28C63 /* ServiceTypesListView.swift */; };
 		F7EA282224D733CC00A28C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EA280D24D733CC00A28C63 /* Assets.xcassets */; };
 		F7EA282324D733CC00A28C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EA280D24D733CC00A28C63 /* Assets.xcassets */; };
 		F7EA283D24D735E300A28C63 /* Publisher+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA283324D735E300A28C63 /* Publisher+Combine.swift */; };
@@ -30,9 +36,12 @@
 /* Begin PBXFileReference section */
 		F72B92AC24E0C6BD00E1C008 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F72B92AF24E0C9F400E1C008 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		F772B33724DCCB5600FE136C /* FrancisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrancisApp.swift; sourceTree = "<group>"; };
-		F772B33A24DCCB8300FE136C /* FrancisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrancisApp.swift; sourceTree = "<group>"; };
-		F7EA280C24D733CB00A28C63 /* ServiceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViews.swift; sourceTree = "<group>"; };
+		F73E9AFB24F929A300FA1584 /* CompactAppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactAppScene.swift; sourceTree = "<group>"; };
+		F73E9AFD24F92A3200FA1584 /* FrancisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrancisApp.swift; sourceTree = "<group>"; };
+		F73E9AFF24F92AAC00FA1584 /* ColumnAppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnAppScene.swift; sourceTree = "<group>"; };
+		F73E9B0324F9D83800FA1584 /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
+		F73E9B0624F9D8BD00FA1584 /* ServicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListView.swift; sourceTree = "<group>"; };
+		F7EA280C24D733CB00A28C63 /* ServiceTypesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypesListView.swift; sourceTree = "<group>"; };
 		F7EA280D24D733CC00A28C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7EA281224D733CC00A28C63 /* Francis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Francis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EA281524D733CC00A28C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F73E9B0224F9D81B00FA1584 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F7EA280C24D733CB00A28C63 /* ServiceTypesListView.swift */,
+				F73E9B0624F9D8BD00FA1584 /* ServicesListView.swift */,
+				F73E9B0324F9D83800FA1584 /* ServiceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F7EA280524D733CB00A28C63 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +96,11 @@
 		F7EA280A24D733CB00A28C63 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F73E9AFD24F92A3200FA1584 /* FrancisApp.swift */,
 				F72B92AC24E0C6BD00E1C008 /* AppState.swift */,
 				F72B92AF24E0C9F400E1C008 /* AppEnvironment.swift */,
-				F7EA280C24D733CB00A28C63 /* ServiceViews.swift */,
 				F7EA283A24D735E300A28C63 /* ServiceTypesProvider.swift */,
+				F73E9B0224F9D81B00FA1584 /* Views */,
 				F7EA283224D735E300A28C63 /* Extensions */,
 				F7EA280D24D733CC00A28C63 /* Assets.xcassets */,
 			);
@@ -99,7 +119,7 @@
 		F7EA281424D733CC00A28C63 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F772B33A24DCCB8300FE136C /* FrancisApp.swift */,
+				F73E9AFB24F929A300FA1584 /* CompactAppScene.swift */,
 				F7EA281524D733CC00A28C63 /* Info.plist */,
 			);
 			path = iOS;
@@ -108,7 +128,7 @@
 		F7EA281B24D733CC00A28C63 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				F772B33724DCCB5600FE136C /* FrancisApp.swift */,
+				F73E9AFF24F92AAC00FA1584 /* ColumnAppScene.swift */,
 				F7EA285124D96AC500A28C63 /* Sidebar.swift */,
 				F7EA281C24D733CC00A28C63 /* Info.plist */,
 				F7EA281D24D733CC00A28C63 /* macOS.entitlements */,
@@ -223,10 +243,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73E9B0724F9D8BD00FA1584 /* ServicesListView.swift in Sources */,
+				F73E9B0424F9D83800FA1584 /* ServiceView.swift in Sources */,
 				F72B92AD24E0C6BD00E1C008 /* AppState.swift in Sources */,
+				F73E9AFC24F929A300FA1584 /* CompactAppScene.swift in Sources */,
+				F73E9AFE24F92A3200FA1584 /* FrancisApp.swift in Sources */,
 				F7EA284B24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */,
-				F772B33B24DCCB8300FE136C /* FrancisApp.swift in Sources */,
-				F7EA282024D733CC00A28C63 /* ServiceViews.swift in Sources */,
+				F7EA282024D733CC00A28C63 /* ServiceTypesListView.swift in Sources */,
 				F7EA284524D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */,
 				F72B92B024E0C9F400E1C008 /* AppEnvironment.swift in Sources */,
 				F7EA284724D735E300A28C63 /* NetService+Combine.swift in Sources */,
@@ -238,13 +261,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73E9B0824F9D8BD00FA1584 /* ServicesListView.swift in Sources */,
+				F73E9B0524F9D83800FA1584 /* ServiceView.swift in Sources */,
 				F72B92AE24E0C6BD00E1C008 /* AppState.swift in Sources */,
 				F7EA284C24D735E300A28C63 /* ServiceTypesProvider.swift in Sources */,
-				F7EA282124D733CC00A28C63 /* ServiceViews.swift in Sources */,
+				F7EA282124D733CC00A28C63 /* ServiceTypesListView.swift in Sources */,
 				F7EA284624D735E300A28C63 /* NetServiceBrowser+Combine.swift in Sources */,
+				F73E9B0024F92AAC00FA1584 /* ColumnAppScene.swift in Sources */,
+				F73E9B0124F92B1600FA1584 /* FrancisApp.swift in Sources */,
 				F7EA284824D735E300A28C63 /* NetService+Combine.swift in Sources */,
 				F72B92B124E0C9F400E1C008 /* AppEnvironment.swift in Sources */,
-				F772B33924DCCB5900FE136C /* FrancisApp.swift in Sources */,
 				F7EA283E24D735E300A28C63 /* Publisher+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

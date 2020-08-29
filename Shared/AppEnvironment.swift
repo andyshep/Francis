@@ -8,6 +8,9 @@
 import Foundation
 
 struct AppEnvironment {
-//    private let browser = NetServiceBrowser()
-    let serviceTypesProvider = ServiceTypesProvider()
+    let serviceTypesProvider: ServiceTypesProvider
+    
+    init(serviceTypesProvider: ServiceTypesProvider = ServiceTypesProvider()) {
+        self.serviceTypesProvider = serviceTypesProvider
+    }
 }
