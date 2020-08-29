@@ -96,9 +96,6 @@ func appReducer(
             .eraseToAnyPublisher()
     
     case .refresh:
-        state.servicesTypes = []
-        state.services = []
-        state.records = []
         return Just(())
             .map { AppAction.loadServiceTypes }
             .eraseToAnyPublisher()
