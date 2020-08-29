@@ -9,16 +9,16 @@
 import Foundation
 import Combine
 
-enum BrowserError: Error {
-    case searchFailed(info: [String: NSNumber])
-}
-
 final class NetServiceBrowserSubscription<SubscriberType: Subscriber>: NSObject, Subscription, NetServiceBrowserDelegate where SubscriberType.Input == [NetService], SubscriberType.Failure == Error {
     
     private var subscriber: SubscriberType?
     private let browser: NetServiceBrowser
     private let type: String
     private let domain: String
+    
+    private enum Error: Swift.Error {
+        case searchFailed(info: [String: NSNumber])
+    }
     
     init(subscriber: SubscriberType, browser: NetServiceBrowser, type: String, domain: String) {
         self.subscriber = subscriber
@@ -47,7 +47,7 @@ final class NetServiceBrowserSubscription<SubscriberType: Subscriber>: NSObject,
     }
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        _ = subscriber?.receive(completion: .failure(BrowserError.searchFailed(info: errorDict)))
+        _ = subscriber?.receive(completion: .failure(Error.searchFailed(info: errorDict)))
     }
 }
 
