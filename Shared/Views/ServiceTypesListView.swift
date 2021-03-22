@@ -53,25 +53,3 @@ private struct StatusBar: View {
             .frame(height: 26)
     }
 }
-
-private struct ServiceTypesLink: View {
-    
-    var serviceType: NetService
-    
-    var body: some View {
-        #if os(iOS)
-        let destination = ServicesListView(
-            serviceType: serviceType
-        )
-        .environmentObject(store)
-        .navigationTitle(serviceType.name)
-        #elseif os(macOS)
-        let destination = ServicesListView(
-            serviceType: serviceType
-        )
-        #endif
-        NavigationLink(destination: destination) {
-            ServiceNameView(service: serviceType)
-        }
-    }
-}
